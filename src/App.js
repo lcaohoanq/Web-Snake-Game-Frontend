@@ -1,22 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload. <br/>
-          Hello World! This is my first React App.
-        </p>
+        <div>
+          <h1>Snake Game</h1>
+        </div>
+        <img src="./logo.png" className="App-logo" alt="logo" />
+        <div className="App-data">
+          <input type="text" placeholder="Username" />
+          <input type="text" placeholder="Password" />
+          <input type="text" placeholder="Confirm-Password" />
+        </div>
+        <div>
+          <button>Submit</button>
+        </div>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/lcaohoanq/Java-Snake-Game"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Click this link
         </a>
       </header>
     </div>
