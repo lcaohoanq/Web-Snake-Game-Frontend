@@ -132,12 +132,11 @@ table {
 
 /* processing */
 .App {
-  border: 1px solid green;
   margin: 0 auto;
   text-align: center;
   font-family: "Roboto", sans-serif;
   /* background-color: #19b719; */
-  background-color: #ffffff;
+  background-color: #121212;
   height: 100vh;
   display: flex;
   flex-direction: column;
