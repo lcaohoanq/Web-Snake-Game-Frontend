@@ -1,5 +1,7 @@
+import { loadGameOverScreen } from "../../component/gameOver/gameOver.js";
+import { collision, wallCollision } from "../../util/collisions.js";
 import { loadResources } from "../../util/imagesLoader.js";
-import { playEatSound, playGameoverSound } from "../../util/soundEffects.js";
+import { playEatSound } from "../../util/soundEffects.js";
 
 var canvas = document.getElementById("game-board");
 canvas.width = window.innerWidth;
@@ -80,22 +82,14 @@ async function draw() {
     snakeX > canvas.width ||
     snakeY < 0 ||
     snakeY > canvas.height ||
-    collision(newHead, snake)
+    collision(newHead, snake) ||
+    wallCollision(newHead, canvas)
   ) {
     clearInterval(game);
+    loadGameOverScreen();
   }
 
   snake.unshift(newHead);
-}
-
-function collision(head, array) {
-  for (var i = 0; i < array.length; i++) {
-    if (head.x == array[i].x && head.y == array[i].y) {
-      playGameoverSound();
-      return true;
-    }
-  }
-  return false;
 }
 
 var game = setInterval(draw, 100);

@@ -15,6 +15,6 @@ body {
   align-items: center; /* Center vertically */
 }
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 /* reset css */

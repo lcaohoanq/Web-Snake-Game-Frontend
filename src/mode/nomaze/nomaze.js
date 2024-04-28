@@ -1,3 +1,4 @@
+import { collision } from "../../util/collisions.js";
 import { loadResources } from "../../util/imagesLoader.js";
 import { playEatSound, playGameoverSound } from "../../util/soundEffects.js";
 
@@ -117,16 +118,6 @@ async function draw() {
 function resetGameInterval() {
   clearInterval(game);
   game = setInterval(draw, gameSpeed);
-}
-
-function collision(head, array) {
-  for (var i = 0; i < array.length; i++) {
-    if (head.x == array[i].x && head.y == array[i].y) {
-      playGameoverSound();
-      return true;
-    }
-  }
-  return false;
 }
 
 var game = setInterval(draw, 100);

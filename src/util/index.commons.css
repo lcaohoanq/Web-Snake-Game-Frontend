@@ -31,10 +31,9 @@
 
 #App-data {
   width: 100%;
-  max-width: 1200px; /* Adjust the max-width for larger screens */
   margin: 0 auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   gap: 20px;
 }
@@ -49,12 +48,27 @@
   width: 150px;
 }
 
+#App-data a.continue {
+  font-size: 2rem;
+  width: 150px;
+}
+
+/* Group the login, register button */
+.top-part {
+  display: flex;
+  flex-direction: row;
+}
+
+.bottom-part {
+  display: flex;
+  flex-direction: row;
+}
+
 .card_button a {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 250px; /* Adjust the max-width for larger screens */
   height: 50px;
   color: #ffffff;
   font-size: 1.2rem;
@@ -67,6 +81,7 @@
   transition: 0.2s;
 }
 
+/* login button */
 .card_button a.log {
   background-color: #19b719;
   border: 1px solid #118011;
@@ -83,6 +98,7 @@
   transform: translateY(2px);
 }
 
+/* register button */
 .card_button a.reg {
   background-color: #ff0000;
   border: 1px solid #b30000;
@@ -95,6 +111,23 @@
 }
 
 .card_button a.reg:active {
+  box-shadow: 0 1px 0 black;
+  transform: translateY(2px);
+}
+
+/* continue button */
+.card_button a.continue {
+  background-color: #4d96ff;
+  border: 1px solid #002299;
+  box-shadow: 0 3px 0 #0027b6;
+  transition: 0.2s;
+}
+
+.card_button a.continue:hover {
+  background-color: #3366ff;
+}
+
+.card_button a.continue:active {
   box-shadow: 0 1px 0 black;
   transform: translateY(2px);
 }
@@ -116,5 +149,5 @@ footer a:hover {
 footer a {
   margin-bottom: 1rem;
   font-size: 1rem;
-  text-decoration: none;
+  text-decoration: none !important;
 }
