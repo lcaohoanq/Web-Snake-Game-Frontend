@@ -1,6 +1,6 @@
-const eatSound = new Audio("../../resources/eating.wav");
-const introSound = new Audio("/src/resources/intro.wav");
-const gameoverSound = new Audio("/src/resources/gameover.wav");
+const eatSound = new Audio("/public/eating.wav");
+const introSound = new Audio("/public/intro.wav");
+const gameoverSound = new Audio("/public/gameover.wav");
 
 export async function playEatSound() {
   await eatSound.play();

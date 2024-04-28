@@ -8,10 +8,14 @@ async function loadImage(src) {
 }
 
 export async function loadResources() {
-  const headImage = await loadImage("/src/resources/head.png");
-  const dotImage = await loadImage("/src/resources/dot.png");
-  const appleImage = await loadImage("/src/resources/apple.png");
-  const wallImage = await loadImage("/src/resources/wall.png");
+  try {
+    const headImage = await loadImage("/public/head.png");
+    const dotImage = await loadImage("/public/dot.png");
+    const appleImage = await loadImage("/public/apple.png");
+    const wallImage = await loadImage("/public/wall.png");
 
-  return { headImage, dotImage, appleImage, wallImage };
+    return { headImage, dotImage, appleImage, wallImage };
+  } catch (err) {
+    console.log("Failed to load resources:", err);
+  }
 }
