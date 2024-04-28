@@ -1,42 +1,4 @@
-const isRequired = (value) => {
-  return value == "" ? "That field is required" : "";
-};
-
-const min = (num) => (value) => value.length >= num ? "" : `Min is ${num}`;
-const max = (num) => (value) => value.length <= num ? "" : `Max is ${num}`;
-
-const createMsg = (parentNode, controlNode, msg) => {
-  const invalidDiv = document.createElement("div");
-  invalidDiv.className = "invalid-feedback";
-  invalidDiv.innerHTML = msg;
-  parentNode.appendChild(invalidDiv);
-  controlNode.forEach((inputNode) => {
-    inputNode.classList.add("is-invalid");
-  });
-};
-
-const isValid = (paraObject) => {
-  let { value, funcs, parentNode, controlNode } = paraObject;
-  for (const funcCheck of funcs) {
-    let msg = funcCheck(value);
-    if (msg !== "") {
-      createMsg(parentNode, controlNode, msg);
-      return msg;
-    }
-  }
-  return "";
-};
-
-//clear all error message
-const clearMsg = () => {
-  document.querySelectorAll(".is-invalid").forEach((inputItem) => {
-    inputItem.classList.remove("is-invalid");
-  });
-
-  document.querySelectorAll(".invalid-feedback").forEach((divMsg) => {
-    divMsg.remove();
-  });
-};
+import { clearMsg, isRequired, isValid } from "../util/formValidate.js";
 
 document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault();
@@ -54,7 +16,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
     }),
     isValid({
       value: passwordNode.value,
-      funcs: [isRequired, min(8), max(30)],
+      funcs: [isRequired],
       parentNode: passwordNode.parentElement,
       controlNode: [passwordNode],
     }),
@@ -62,8 +24,13 @@ document.querySelector("form").addEventListener("submit", (event) => {
 
   const isValidForm = errorMsg.every((item) => !item);
 
-  if (isValidForm) {
+  if (isValidForm && isAdmin(usernameNode.value, passwordNode.value)) {
     clearMsg();
-    alert("Form is valid");
+    alert("Hello " + usernameNode.value);
+    window.location.href = "/src/mode/options.html";
   }
 });
+
+const isAdmin = (username, password) => {
+  return username === "admin" && password === "admin";
+};
