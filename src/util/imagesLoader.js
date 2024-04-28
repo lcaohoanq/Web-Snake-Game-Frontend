@@ -11,6 +11,7 @@ export async function loadResources() {
   const headImage = await loadImage("/src/resources/head.png");
   const dotImage = await loadImage("/src/resources/dot.png");
   const appleImage = await loadImage("/src/resources/apple.png");
+  const wallImage = await loadImage("/src/resources/wall.png");
 
-  return { headImage, dotImage, appleImage };
+  return { headImage, dotImage, appleImage, wallImage };
 }

@@ -8,9 +8,11 @@ var context = canvas.getContext("2d");
 
 var box = 10;
 var snake = [];
-snake[0] = { x: 12 * box, y: 10 * box };
-snake[1] = { x: 11 * box, y: 10 * box };
-snake[2] = { x: 10 * box, y: 10 * box };
+snake[0] = { x: 14 * box, y: 10 * box };
+snake[1] = { x: 13 * box, y: 10 * box };
+snake[2] = { x: 12 * box, y: 10 * box };
+snake[3] = { x: 11 * box, y: 10 * box };
+snake[4] = { x: 10 * box, y: 10 * box };
 var direction = "RIGHT";
 
 var applesEaten = 0;

@@ -1,4 +1,5 @@
-import { playGameoverSound } from "../../util/soundEffects.js";
+import { loadResources } from "../../util/imagesLoader.js";
+import { playEatSound, playGameoverSound } from "../../util/soundEffects.js";
 
 var canvas = document.getElementById("game-board");
 canvas.width = window.innerWidth;
@@ -7,7 +8,12 @@ var context = canvas.getContext("2d");
 
 var box = 10;
 var snake = [];
-snake[0] = { x: 10 * box, y: 10 * box };
+snake[0] = { x: 14 * box, y: 10 * box };
+snake[1] = { x: 13 * box, y: 10 * box };
+snake[2] = { x: 12 * box, y: 10 * box };
+snake[3] = { x: 11 * box, y: 10 * box };
+snake[4] = { x: 10 * box, y: 10 * box };
+
 var direction = "RIGHT";
 
 var food = {
@@ -24,15 +30,27 @@ function updateDirection(event) {
   if (event.keyCode == 40 && direction != "UP") direction = "DOWN";
 }
 
-function draw() {
+async function draw() {
+  const { headImage, dotImage, appleImage, wallImage } = await loadResources();
+
   context.clearRect(0, 0, canvas.width, canvas.height);
+
   for (var i = 0; i < snake.length; i++) {
-    context.fillStyle = i == 0 ? "green" : "white";
-    context.fillRect(snake[i].x, snake[i].y, box, box);
+    const img = i == 0 ? headImage : dotImage;
+    context.drawImage(img, snake[i].x, snake[i].y, box, box);
   }
 
-  context.fillStyle = "red";
-  context.fillRect(food.x, food.y, box, box);
+  context.drawImage(appleImage, food.x, food.y, box, box);
+
+  for (var i = 0; i < canvas.width; i += box) {
+    context.drawImage(wallImage, i, 0, box, box);
+    context.drawImage(wallImage, i, canvas.height - box, box, box);
+  }
+
+  for (var i = 0; i < canvas.height; i += box) {
+    context.drawImage(wallImage, 0, i, box, box);
+    context.drawImage(wallImage, canvas.width - box, i, box, box);
+  }
 
   var snakeX = snake[0].x;
   var snakeY = snake[0].y;
@@ -43,6 +61,7 @@ function draw() {
   if (direction == "DOWN") snakeY += box;
 
   if (snakeX == food.x && snakeY == food.y) {
+    playEatSound();
     food = {
       x: Math.floor(Math.random() * 15 + 1) * box,
       y: Math.floor(Math.random() * 15 + 1) * box,
