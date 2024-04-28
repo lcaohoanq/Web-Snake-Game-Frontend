@@ -3,11 +3,23 @@ const introSound = new Audio("/public/intro.wav");
 const gameoverSound = new Audio("/public/gameover.wav");
 
 export async function playEatSound() {
-  await eatSound.play();
+  try {
+    await eatSound.play();
+  } catch (err) {
+    console.log(err);
+  }
 }
 export async function playIntroSound() {
-  await introSound.play();
+  try {
+    await introSound.play();
+  } catch (err) {
+    console.log(err);
+  }
 }
 export async function playGameoverSound() {
-  await gameoverSound.play();
+  try {
+    await gameoverSound.play();
+  } catch (err) {
+    console.log(err);
+  }
 }
