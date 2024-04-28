@@ -1,4 +1,9 @@
+import { playIntroSound } from "../util/soundEffects.js";
+
 $(document).ready(function () {
+  //Play the intro sound
+  playIntroSound();
+
   var inputPreview = $(".input-preview"),
     input = $(".input");
 
