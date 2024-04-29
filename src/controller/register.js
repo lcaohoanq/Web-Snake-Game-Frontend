@@ -50,7 +50,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
 });
 
 function registerNewAccount(usernameNode, passwordNode, confirmPasswordNode) {
-  fetch("http://localhost:4000/users/register", {
+  fetch("https://web-snake-game-backend.onrender.com/users/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
