@@ -61,9 +61,19 @@ function registerNewAccount(usernameNode, passwordNode, confirmPasswordNode) {
       confirmPassword: confirmPasswordNode.value,
     }),
   })
-    .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      if (data.message === "Account already exists") {
+        alert(data.message);
+      } else {
+        alert("Register successfully!");
+      }
+    })
     .catch((error) => {
       console.error("Error:", error);
+      alert(error.message);
     });
 }
