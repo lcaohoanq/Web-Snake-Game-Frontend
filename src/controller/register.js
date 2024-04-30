@@ -1,3 +1,4 @@
+import { createAlert } from '../util/alert.js';
 import { clearMsg, isRequired, isSame, isValid, max, min } from '../util/formValidate.js';
 
 document.querySelector('form').addEventListener('submit', (event) => {
@@ -46,35 +47,48 @@ document.querySelector('form').addEventListener('submit', (event) => {
 
   if (isValidForm) {
     clearMsg();
-    register(usernameNode, passwordNode, confirmPasswordNode);
+    handleRegister(usernameNode, passwordNode, confirmPasswordNode);
   }
 });
 
+async function handleRegister(username, password, confirmPassword) {
+  try {
+    const response = await register(username, password, confirmPassword);
+    if (response) {
+      console.log(response);
+      createAlert('Register Success');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
 async function register(usernameNode, passwordNode, confirmPasswordNode) {
-  await fetch('https://web-snake-game-backend.onrender.com/users/register', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      username: usernameNode.value,
-      password: passwordNode.value,
-      confirmPassword: confirmPasswordNode.value
-    })
-  })
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-      if (data.message === 'Account already exists') {
-        alert(data.message);
-      } else {
-        alert('Register successfully!');
-      }
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-      alert(error.message);
+  try {
+    const response = await fetch('https://web-snake-game-backend.onrender.com/users/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: usernameNode.value,
+        password: passwordNode.value,
+        confirmPassword: confirmPasswordNode.value
+      })
     });
+
+    const status = response.status;
+
+    if (status === 400) {
+      throw new Error('Username already exists!');
+    } else if (status === 500) {
+      throw new Error('Server error!');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error:', error);
+    createAlert(error.message);
+  }
 }

@@ -3,6 +3,9 @@
 - Test account
 
 ```text
+username: admin
+password: admin
+
 username: duongmanhnguyen
 password: $2b$10$CyWPS5ik9G3cxte.fWTjm.l1P5BSbkI0wC4RH9PdqxtkBfkulelJK
 ```
