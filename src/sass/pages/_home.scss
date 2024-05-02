@@ -1,202 +1,176 @@
-@import '../layout/header';
-@import '../layout/footer';
-@import '../layout/container';
-@import '../layout/body';
-@import '../components/logo';
-@import '../components/card';
+@import '../components/toggle';
 @import '../abstracts/mixins';
+@import '../abstracts/variables';
 
-.App {
-  #tmp {
-    @include flex-center;
-    flex-direction: row;
-    gap: 2rem;
-    padding: 1rem;
+.Home {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  header {
+    margin-top: 2rem;
+    font-weight: bold;
+    color: #19b719;
   }
 
-  #App-data {
-    .log,
-    .reg,
-    .continue {
-      font-size: 2rem;
-      width: 200px;
+  .Body {
+    .Logo {
+      max-width: 80%;
     }
 
-    /* Group the login, register button */
-    .top-part {
-      @include flex-center;
-      flex-direction: row;
-    }
-
-    .bottom-part {
-      @include flex-center;
-      flex-direction: row;
-    }
-    /* fix the style of 3 button*/
-  }
-}
-
-@media only screen and (max-width: 320px) {
-  .App {
-    #tmp {
-      #App-img img {
-        border: 1;
-      }
-    }
-  }
-}
-
-@media only screen and (min-width: 320px) and (max-width: 575px) {
-  .App-header {
-    font-size: 2.5rem;
-  }
-
-  .App {
-    #tmp {
-      @include flex-center;
-      flex-direction: column;
-
-      #App-img img {
-        width: 100%;
-      }
-
-      #App-data {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        .log,
-        .reg {
-          font-size: 1.5rem;
-          width: 150px;
-          height: 50px;
-        }
-      }
-    }
-  }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .App-header {
-    font-size: 4.5rem;
-  }
-
-  .App {
-    #tmp {
-      @include flex-center;
-      flex-direction: column;
-      #App-data {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        .log,
-        .reg {
-          font-size: 1.5rem;
-          width: 150px;
-          height: 50px;
-        }
-      }
-    }
-  }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 1200px) {
-  .App-header {
-    font-size: 3rem;
-  }
-
-  .App {
-    #tmp {
-      @include flex-center;
-      flex-direction: column;
-      gap: 2rem;
-      padding: 1rem;
-    }
-
-    #App-data {
-      @include flex-center;
-      flex-direction: column;
-      margin-bottom: 4rem;
-
-      .log,
-      .reg {
-        font-size: 2.5rem;
-        width: 170px;
-        height: 70px;
-      }
-
-      .continue {
-        font-size: 2rem;
-        width: 280px;
-        height: 70px;
-      }
-
-      .top-part {
-        gap: 2rem;
-      }
-
-      .card_button a {
-        width: 100%;
-      }
-    }
-  }
-}
-
-@media only screen and (min-width: 1201px) and (max-width: 1920px) {
-  .App {
-    .App-header {
-      font-size: 5rem;
-    }
-
-    #tmp {
+    .Button {
       width: 100%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      padding: 2rem;
+      margin: 0 auto;
+      @include flex-column-container;
+      gap: 20px;
 
-      #App-img img {
-        /* margin-top: 1rem; */
-        width: 100%;
-        height: auto;
+      a.log,
+      a.reg,
+      a.continue {
+        font-size: 2rem;
+        width: 150px;
       }
 
-      #App-data {
-        width: 50%;
-        @include flex-center;
-        flex-direction: column;
-        gap: 30px;
+      .Login-Register-Container {
+        @include flex-row-container;
 
-        .log,
-        .reg {
-          font-size: 4rem;
-          width: 250px;
-          height: 100px;
-        }
-        .continue {
-          font-size: 3rem;
-          width: 400px;
-          height: 100px;
-        }
+        .card_button a {
+          @include button-styles(15vw, 8vh);
+          @include text-styles(white, 3rem, bold);
+          &.log {
+            @include button-press-effect(#19b719, #118011, #118011);
+          }
 
-        .top-part {
-          gap: 3rem;
+          &.reg {
+            @include button-press-effect(#ff0000, #b30000, #b30000);
+          }
+        }
+      }
+
+      .Continue-Container {
+        @include flex-row-container;
+
+        .card_button a {
+          @include button-styles(27vw, 8vh);
+          @include text-styles(white, 3rem, bold);
+          &.continue {
+            @include button-press-effect(#4d96ff, #002299, #0027b6);
+          }
         }
       }
     }
   }
 
   footer {
-    p {
-      font-size: 1.5rem;
-    }
-
+    @include flex-column-container;
+    gap: 10px;
+    padding: 1rem;
+    color: #19b719;
     a {
       margin-bottom: 1rem;
-      font-size: 2rem;
+      font-size: 1rem;
+      text-decoration: none !important;
+
+      &:hover {
+        font-weight: bold;
+      }
     }
+  }
+}
+
+@media only screen and (max-width: 320px) {
+}
+
+@media only screen and (min-width: 321px) and (max-width: 575px) {
+}
+
+@media only screen and (min-width: 576px) and (max-width: 768px) {
+  header {
+    font-size: 5vw;
+  }
+
+  .Body {
+    .Logo {
+      .logo-img {
+        width: 80%;
+      }
+    }
+
+    .Button {
+      .Login-Register-Container {
+        .card_button a {
+          @include button-styles(30vw, 8vh);
+          @include text-styles(white, 3rem, bold);
+        }
+      }
+
+      .Continue-Container {
+        .card_button a {
+          @include button-styles(27vw, 8vh);
+          @include text-styles(white, 3rem, bold);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1201px) and (max-width: 1920px) {
+  header {
+    font-size: 8rem;
+  }
+
+  .Body {
+    @include flex-row-container;
+    padding: 2rem;
+  }
+
+  .Button {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .Login-Register-Container {
+    gap: 3rem;
+  }
+
+  .Button a.log {
+    font-size: 4rem;
+    width: 250px;
+    height: 100px;
+  }
+
+  .Button a.reg {
+    font-size: 4rem;
+    width: 250px;
+    height: 100px;
+  }
+
+  .Button a.continue {
+    font-size: 3rem;
+    width: 400px;
+    height: 100px;
+  }
+
+  .Logo img {
+    /* margin-top: 1rem; */
+    width: 100%;
+    height: auto;
+  }
+
+  footer p {
+    font-size: 1.5rem;
+  }
+
+  footer a {
+    margin-bottom: 1rem;
+    font-size: 2rem;
   }
 }

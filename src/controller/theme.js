@@ -1,15 +1,15 @@
-import { darkThemePath, lightThemePath } from "../constant/file.path.js";
+import { darkThemePath, lightThemePath } from '../constant/file.path.js';
 
-document.querySelector(".log").addEventListener("click", (e) => {
-  window.location.href = "/login.html";
+document.querySelector('.log').addEventListener('click', (e) => {
+  window.location.href = '/login.html';
 });
 
-document.querySelector(".reg").addEventListener("click", (e) => {
-  window.location.href = "/register.html";
+document.querySelector('.reg').addEventListener('click', (e) => {
+  window.location.href = '/register.html';
 });
 
 function changeTheme() {
-  const toggle = document.getElementById("toggle");
+  const toggle = document.getElementById('toggle');
   let newTheme;
   if (toggle.checked) {
     newTheme = lightThemePath;
@@ -17,7 +17,7 @@ function changeTheme() {
   } else {
     newTheme = darkThemePath;
   }
-  document.getElementById("theme").setAttribute("href", newTheme);
+  document.getElementById('theme').setAttribute('href', newTheme);
 }
 
 // Set the initial theme based on the current time
@@ -32,15 +32,15 @@ function setInitialTheme() {
     initialTheme = darkThemePath;
   }
 
-  document.getElementById("theme").setAttribute("href", initialTheme);
+  // document.getElementById("theme").setAttribute("href", initialTheme);
 }
 
 // Call setInitialTheme function when the page loads
 window.onload = setInitialTheme;
 
 // Add event listener to the checkbox after DOM content is loaded
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("toggle").addEventListener("change", function () {
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('toggle').addEventListener('change', function () {
     changeTheme();
   });
 });
