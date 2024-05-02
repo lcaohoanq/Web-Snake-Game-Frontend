@@ -1,0 +1,66 @@
+.card_button a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  color: #ffffff;
+  font-size: 1.2rem;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid #118011;
+  border-radius: 5px;
+  box-shadow: 0 3px 0 #118011;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* login button */
+.card_button a.log {
+  background-color: #19b719;
+  border: 1px solid #118011;
+  box-shadow: 0 3px 0 #118011;
+  transition: 0.2s;
+}
+
+.card_button a.log:hover {
+  background-color: #2bcd2b;
+}
+
+.card_button a.log:active {
+  box-shadow: 0 1px 0 black;
+  transform: translateY(2px);
+}
+
+/* register button */
+.card_button a.reg {
+  background-color: #ff0000;
+  border: 1px solid #b30000;
+  box-shadow: 0 3px 0 #b30000;
+  transition: 0.2s;
+}
+
+.card_button a.reg:hover {
+  background-color: #ff4d4d;
+}
+
+.card_button a.reg:active {
+  box-shadow: 0 1px 0 black;
+  transform: translateY(2px);
+}
+
+/* continue button */
+.card_button a.continue {
+  background-color: #4d96ff;
+  border: 1px solid #002299;
+  box-shadow: 0 3px 0 #0027b6;
+  transition: 0.2s;
+}
+
+.card_button a.continue:hover {
+  background-color: #3366ff;
+}
+
+.card_button a.continue:active {
+  box-shadow: 0 1px 0 black;
+  transform: translateY(2px);
+}

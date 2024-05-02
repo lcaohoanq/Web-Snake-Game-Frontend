@@ -1,0 +1,202 @@
+@import '../layout/header';
+@import '../layout/footer';
+@import '../layout/container';
+@import '../layout/body';
+@import '../components/logo';
+@import '../components/card';
+@import '../abstracts/mixins';
+
+.App {
+  #tmp {
+    @include flex-center;
+    flex-direction: row;
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  #App-data {
+    .log,
+    .reg,
+    .continue {
+      font-size: 2rem;
+      width: 200px;
+    }
+
+    /* Group the login, register button */
+    .top-part {
+      @include flex-center;
+      flex-direction: row;
+    }
+
+    .bottom-part {
+      @include flex-center;
+      flex-direction: row;
+    }
+    /* fix the style of 3 button*/
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .App {
+    #tmp {
+      #App-img img {
+        border: 1;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 575px) {
+  .App-header {
+    font-size: 2.5rem;
+  }
+
+  .App {
+    #tmp {
+      @include flex-center;
+      flex-direction: column;
+
+      #App-img img {
+        width: 100%;
+      }
+
+      #App-data {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .log,
+        .reg {
+          font-size: 1.5rem;
+          width: 150px;
+          height: 50px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .App-header {
+    font-size: 4.5rem;
+  }
+
+  .App {
+    #tmp {
+      @include flex-center;
+      flex-direction: column;
+      #App-data {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .log,
+        .reg {
+          font-size: 1.5rem;
+          width: 150px;
+          height: 50px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .App-header {
+    font-size: 3rem;
+  }
+
+  .App {
+    #tmp {
+      @include flex-center;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 1rem;
+    }
+
+    #App-data {
+      @include flex-center;
+      flex-direction: column;
+      margin-bottom: 4rem;
+
+      .log,
+      .reg {
+        font-size: 2.5rem;
+        width: 170px;
+        height: 70px;
+      }
+
+      .continue {
+        font-size: 2rem;
+        width: 280px;
+        height: 70px;
+      }
+
+      .top-part {
+        gap: 2rem;
+      }
+
+      .card_button a {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1201px) and (max-width: 1920px) {
+  .App {
+    .App-header {
+      font-size: 5rem;
+    }
+
+    #tmp {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 2rem;
+
+      #App-img img {
+        /* margin-top: 1rem; */
+        width: 100%;
+        height: auto;
+      }
+
+      #App-data {
+        width: 50%;
+        @include flex-center;
+        flex-direction: column;
+        gap: 30px;
+
+        .log,
+        .reg {
+          font-size: 4rem;
+          width: 250px;
+          height: 100px;
+        }
+        .continue {
+          font-size: 3rem;
+          width: 400px;
+          height: 100px;
+        }
+
+        .top-part {
+          gap: 3rem;
+        }
+      }
+    }
+  }
+
+  footer {
+    p {
+      font-size: 1.5rem;
+    }
+
+    a {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+  }
+}

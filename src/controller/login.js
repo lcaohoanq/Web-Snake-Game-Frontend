@@ -32,9 +32,7 @@ document.querySelector('form').addEventListener('submit', (event) => {
     if (isAdmin(usernameNode.value, passwordNode.value)) {
       swal({
         title: 'Login success!',
-        text: `Hello ${usernameNode.value}!`,
-        icon: 'success',
-        button: 'OK'
+        text: 'Hello'
       });
     }
   }
