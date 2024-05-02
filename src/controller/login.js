@@ -1,3 +1,4 @@
+import swal from 'sweetalert';
 import { createAlert } from '../util/alert.js';
 import { clearMsg, isRequired, isValid } from '../util/formValidate.js';
 
@@ -27,7 +28,13 @@ document.querySelector('form').addEventListener('submit', (event) => {
 
   if (isValidForm) {
     clearMsg();
-    handleLogin(usernameNode, passwordNode);
+    // handleLogin(usernameNode, passwordNode);
+    if (isAdmin(usernameNode.value, passwordNode.value)) {
+      swal({
+        title: 'Login success!',
+        text: 'Hello'
+      });
+    }
   }
 });
 
@@ -41,7 +48,14 @@ async function handleLogin(username, password) {
     if (response) {
       console.log(response);
       createAlert(`\nLogin success, Hello ${username.value}!`);
-      window.location.href = '/src/mode/options.html';
+      // swal({
+      //   title: 'Login success!',
+      //   text: `Hello ${username.value}!`,
+      //   icon: 'success',
+      //   button: 'OK'
+      // }).then(() => {
+      //   window.location.href = '/src/mode/options.html';
+      // });
     }
   } catch (error) {
     console.error('Error:', error);
