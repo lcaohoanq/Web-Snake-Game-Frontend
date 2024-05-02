@@ -1,8 +1,7 @@
 .App {
   margin: 0 auto;
   text-align: center;
-  font-family: "Roboto", sans-serif;
-  /* this height is for testing, will adjust later by responsive */
+  font-family: 'Roboto', sans-serif;
   max-width: 700px;
   flex-direction: row;
 }
@@ -38,31 +37,31 @@
   margin-bottom: 20px;
 }
 #App-data input {
+  border: 1px solid red;
   border: none;
   font-size: 1.8rem;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   border-radius: 5px;
   text-indent: 10px;
   background-color: #f0f0f0;
 }
-#App-data #username {
-  width: 250px;
-  height: 50px;
+
+#input-container {
+  color: 1px solid red;
+  padding: 0 50px 0 50px;
 }
-#App-data #password {
-  width: 250px;
-  height: 50px;
-}
+
+#App-data #username,
+#App-data #password,
 #App-data #confirmPassword {
   width: 250px;
   height: 50px;
 }
+
 #App-data input:hover {
   background-color: #ffffff;
 }
-#App-data label {
-  /* background-color: #ffffff; */
-}
+
 .submit-btn button {
   width: 250px;
   height: 50px;
