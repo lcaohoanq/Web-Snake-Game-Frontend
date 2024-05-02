@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  margin: 0 50px 0 20px;
+  flex-wrap: wrap;
 }
 .policy input {
   width: 15px;

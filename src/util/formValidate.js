@@ -7,6 +7,8 @@ export const isRequired = (value) => {
   return value == '' ? ' (*) Field is required' : '';
 };
 
+export const createMessage = (msg) => (value) => (value == '' ? ` (*) ${msg}` : '');
+
 export const min = (num) => (value) => (value.length >= num ? '' : `Min is ${num}`);
 export const max = (num) => (value) => (value.length <= num ? '' : `Max is ${num}`);
 
@@ -24,30 +26,14 @@ export const createMsg = (parentNode, controlNode, msg) => {
   });
 };
 
-export const createMsgTickBox = (parentNode, controlNode, msg) => {
-  const invalidDiv = document.createElement('div');
-  invalidDiv.className = 'invalid-feedback-tickBox';
-  invalidDiv.innerHTML = msg;
-  parentNode.parentNode.appendChild(invalidDiv);
-  controlNode.forEach((inputNode) => {
-    inputNode.classList.add('is-invalid');
-  });
-};
-
 export const isValid = (paraObject) => {
   let { value, funcs, parentNode, controlNode } = paraObject;
 
   for (const funcCheck of funcs) {
     let msg = funcCheck(value);
-    if (msg !== '' && controlNode[0].type !== 'checkbox') {
-      createMsg(parentNode, controlNode, msg);
-      return msg;
-    } else {
-      createMsgTickBox(parentNode, controlNode, msg);
-      return msg;
-    }
+    createMsg(parentNode, controlNode, msg);
+    return msg;
   }
-
   return '';
 };
 

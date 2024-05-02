@@ -1,5 +1,13 @@
 import { createAlert } from '../util/alert.js';
-import { clearMsg, isRequired, isSame, isValid, max, min } from '../util/formValidate.js';
+import {
+  clearMsg,
+  createMessage,
+  isRequired,
+  isSame,
+  isValid,
+  max,
+  min
+} from '../util/formValidate.js';
 
 document.querySelector('form').addEventListener('submit', (event) => {
   event.preventDefault();
@@ -37,7 +45,7 @@ document.querySelector('form').addEventListener('submit', (event) => {
     // Add a new validation for the checkbox
     isValid({
       value: tickBoxNode.checked,
-      funcs: [isRequired],
+      funcs: [createMessage('Please check the box to finish the registration')],
       parentNode: tickBoxNode.parentElement,
       controlNode: [tickBoxNode]
     })
