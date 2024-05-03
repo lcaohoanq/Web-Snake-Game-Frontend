@@ -1,0 +1,29 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+
+  .submit-btn {
+    button {
+      @include button-styles(250px, 50px, $main-color, $main-color-border, $main-color-border, 5px);
+      @include text-styles($text-white, 20px, bold);
+      @include setPadding(0.25rem, 0.75rem, 0.25rem, 0.75rem);
+
+      cursor: pointer;
+      transition: 0.2s;
+
+      &:hover {
+        background-color: $main-color-hover;
+      }
+
+      &:active {
+        box-shadow: 0 1px 0 $text-white;
+        transform: translateY(2px);
+      }
+    }
+  }
+}

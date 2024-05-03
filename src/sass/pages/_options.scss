@@ -1,0 +1,60 @@
+@import '../base/base';
+@import '../components/optionButton';
+
+.select-ctr {
+  background: #19b719;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px; /* sum of input-1 -> input-7 */
+  height: 490px;
+
+  > div {
+    padding: 15px 20px;
+    position: absolute;
+    width: 100%;
+    font-size: 2rem;
+    cursor: pointer;
+
+    &.input {
+      background: #fff;
+      color: #777;
+      border-radius: 2px;
+      box-shadow: 0 2px 15px 3px rgba(0, 0, 0, 0.1);
+
+      &.active {
+        color: #2bcd2b;
+      }
+    }
+
+    &.input-preview {
+      color: rgba(255, 255, 255, 0.75);
+      position: relative;
+      transition: 0.3s all ease;
+
+      &.active {
+        color: white;
+
+        &:before {
+          background: white;
+          clip-path: polygon(50% 0, 0 73%, 100% 73%);
+        }
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 18px;
+        right: 20px;
+        bottom: 20px;
+        width: 20px;
+        background: rgba(255, 255, 255, 0.75);
+        clip-path: polygon(50% 73%, 0 0, 100% 0);
+        padding: 10px;
+        box-sizing: border-box;
+        transition: 0.3s all ease;
+      }
+    }
+  }
+}

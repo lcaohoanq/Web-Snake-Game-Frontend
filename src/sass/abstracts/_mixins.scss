@@ -16,7 +16,7 @@
   }
 }
 
-@mixin button-styles($width, $height) {
+@mixin button-styles-sugar($width, $height) {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +27,6 @@
   font-weight: bold;
   padding: 0.25rem 0.75rem;
   border-radius: 5px;
-  cursor: pointer;
   transition: $button-transition;
 }
 
@@ -35,6 +34,44 @@
   color: $color;
   font-size: $size;
   font-weight: $weight;
+}
+
+@mixin dimensions($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin setBorderRadius($radius) {
+  border-radius: $radius;
+}
+
+@mixin button-styles($width, $height, $bg-color, $border-color, $shadow-color, $radius) {
+  cursor: pointer;
+  @include setBorderRadius($radius);
+  @include dimensions($width, $height);
+  @include button-press-effect($bg-color, $border-color, $shadow-color);
+}
+
+@mixin setMargin($top, $right, $bottom, $left) {
+  margin-top: $top;
+  margin-right: $right;
+  margin-bottom: $bottom;
+  margin-left: $left;
+}
+
+@mixin setPadding($top, $right, $bottom, $left) {
+  padding-top: $top;
+  padding-right: $right;
+  padding-bottom: $bottom;
+  padding-left: $left;
+}
+
+@mixin flex-custom($direction, $justify, $align, $gap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
 }
 
 @mixin flex-row-container {

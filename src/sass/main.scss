@@ -10,6 +10,8 @@
 @import 'base/animations';
 
 // component
+@import 'components/header';
+@import 'components/footer';
 @import 'components/toggle';
 @import 'components/button';
 @import 'components/googleButton';
@@ -20,9 +22,7 @@
 
 // layout
 @import 'layout/container';
-@import 'layout/header';
 @import 'layout/body';
-@import 'layout/footer';
 
 // pages
 @import 'pages/home';

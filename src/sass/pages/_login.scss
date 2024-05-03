@@ -1,4 +1,7 @@
 @import '../base/base';
+@import '../layout/container';
+@import '../layout/body';
+@import '../abstracts/variables';
 
 .forgot-password {
   font-size: 1.5rem;
@@ -7,12 +10,9 @@
 }
 
 .forgot-password a {
-  color: #19b719;
+  color: $main-color;
 }
 
 .forgot-password a:hover {
   font-weight: bold;
-}
-
-@media only screen and (min-width: 1201px) and (max-width: 1920px) {
 }
