@@ -27,7 +27,13 @@ document.querySelector('form').addEventListener('submit', (event) => {
 
   if (isValidForm) {
     clearMsg();
-    handleLogin(usernameNode, passwordNode);
+    // handleLogin(usernameNode, passwordNode);
+    if (
+      isAdmin(usernameNode.value, passwordNode.value) ||
+      handleLogin(usernameNode, passwordNode)
+    ) {
+      createAlert(`\nLogin success, Hello ${usernameNode.value}!`);
+    }
   }
 });
 
@@ -41,7 +47,6 @@ async function handleLogin(username, password) {
     if (response) {
       console.log(response);
       createAlert(`\nLogin success, Hello ${username.value}!`);
-      window.location.href = '/src/mode/options.html';
     }
   } catch (error) {
     console.error('Error:', error);

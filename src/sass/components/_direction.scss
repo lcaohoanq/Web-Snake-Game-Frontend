@@ -1,0 +1,22 @@
+@import '../abstracts/mixins';
+@import '../abstracts/variables';
+
+.bottom-btn {
+  @include flex-row-container;
+
+  gap: 10px;
+
+  p {
+    color: black;
+  }
+
+  a {
+    border: none;
+    color: $main-color;
+    background-color: #ffffff;
+
+    &:hover {
+      font-weight: bold;
+    }
+  }
+}

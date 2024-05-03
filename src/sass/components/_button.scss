@@ -1,0 +1,41 @@
+.Button {
+  width: 100%;
+  margin: 0 auto;
+  @include flex-column-container;
+  gap: 20px;
+
+  a.log,
+  a.reg,
+  a.continue {
+    font-size: 2rem;
+    width: 150px;
+  }
+
+  .Login-Register-Container {
+    @include flex-row-container;
+
+    .card_button a {
+      @include button-styles-sugar(15vw, 8vh);
+      @include text-styles(white, 3rem, bold);
+      &.log {
+        @include button-press-effect(#19b719, #118011, #118011);
+      }
+
+      &.reg {
+        @include button-press-effect(#ff0000, #b30000, #b30000);
+      }
+    }
+  }
+
+  .Continue-Container {
+    @include flex-row-container;
+
+    .card_button a {
+      @include button-styles-sugar(27vw, 8vh);
+      @include text-styles(white, 3rem, bold);
+      &.continue {
+        @include button-press-effect(#4d96ff, #002299, #0027b6);
+      }
+    }
+  }
+}
