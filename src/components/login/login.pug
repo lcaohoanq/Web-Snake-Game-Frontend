@@ -1,0 +1,36 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Login
+    style
+      | @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    link(rel='icon', type='image/png', href='../public/favicon.ico')
+    link(rel='stylesheet', href='/src/style/style.css')
+  body
+    .App
+      section#App-logo
+        img(src='/public/logo.png', alt='Snake-Logo')
+      section#App-data
+        .title
+          h1 Sign In
+        form
+          #input-container
+            input.form-control(autofocus, placeholder='Username', type='username', id='username')
+          #input-container
+            input.form-control(placeholder='Password', type='password', id='password')
+          .forgot-password
+            a(href='../forgotPassword/forgotPassword.html') Forgot password?
+          .submit-btn
+            button Submit
+        .google-button
+          button.google-btn(id='log-google')
+            .google-icon-wrapper
+              img.google-icon(src='https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg')
+            .btn-text
+              p Sign in with Google
+        .bottom-btn
+          p Not a member?
+          a(href='../register/register.html') Sign up here
+    script(type='module', src='/src/controller/login.js')
