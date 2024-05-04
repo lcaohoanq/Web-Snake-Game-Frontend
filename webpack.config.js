@@ -63,6 +63,17 @@ const config = {
         use: [stylesHandler, 'css-loader', 'postcss-loader']
       },
       {
+        test: /\.wav$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'assets/sounds/[name].[ext]'
+            }
+          }
+        ]
+      },
+      {
         test: /\.(gif|png|jpe?g|svg|ico)$/i,
         use: [
           {
