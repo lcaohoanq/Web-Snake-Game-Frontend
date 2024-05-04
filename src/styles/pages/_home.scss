@@ -1,0 +1,13 @@
+// @import '../components/toggle';
+@import '../abstracts/mixins';
+@import '../abstracts/variables';
+@import '../components/header';
+@import '../layout/body';
+@import '../components/footer';
+@import '../layout/container';
+
+.Home {
+  text-align: center;
+  height: 100vh;
+  @include flex-custom(column, space-around, center, 0);
+}

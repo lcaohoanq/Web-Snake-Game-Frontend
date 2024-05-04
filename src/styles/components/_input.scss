@@ -1,0 +1,25 @@
+.input-container {
+  padding: 0 50px 0 50px;
+
+  input {
+    border: none;
+    font-size: 1.8rem;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 5px;
+    text-indent: 10px;
+    background-color: #f0f0f0;
+
+    &:hover {
+      background-color: #ffffff;
+    }
+  }
+
+  #username-login,
+  #password-login,
+  #username-register,
+  #password-register,
+  #confirmPassword {
+    width: 250px;
+    height: 50px;
+  }
+}

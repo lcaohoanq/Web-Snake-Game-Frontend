@@ -1,0 +1,33 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(href="/src/assets/favicon.ico", rel="icon", type="image/png")
+    title Register
+    link(rel='icon', type='image/png', href='../public/favicon.ico')
+    link(rel='stylesheet', href='/src/style/style.css')
+  body
+    .App
+      section#App-logo
+        img(src='../../assets/images/logo.png', alt='Snake-Logo')
+      section#App-data
+        .title
+          h1 Sign Up
+        form#registerForm
+          .input-container
+            input.form-control(autofocus, placeholder='Username', type='username', id='username-register')
+          .input-container
+            input.form-control(placeholder='Password', type='password', id='password-register')
+          .input-container
+            input.form-control(placeholder='Confirm Password', type='password', id='confirmPassword')
+          .submit-btn#submit-login
+            button Submit
+          .input-container.policy
+            input(type='checkbox', id='tickBox')
+            p I Agree to the&nbsp;
+            a(href='#') Term & Condition
+        .bottom-btn
+          p Already have an account?
+          a(href='../login/login.html') Sign in here
+    script(type='module', src='/src/controller/register.js')
