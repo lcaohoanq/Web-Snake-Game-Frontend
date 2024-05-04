@@ -1,4 +1,5 @@
 import { LoginFormModel } from '../models/loginModel';
+import Swal from 'sweetalert2';
 import { FormData } from '../models/validForm';
 import { clearMsg, isRequired, isValid } from '../util/formValidate';
 
@@ -23,26 +24,44 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     const isValidForm = errorMsg.every((item) => !item);
 
+    const user = new LoginFormModel({
+      username: usernameNode.value,
+      password: passwordNode.value
+    })
+
     if (isValidForm) {
       clearMsg();
-      handleLogin(usernameNode.value, passwordNode.value);
+      handleLogin(user.getUsername, user.getPassword);
     }
   });
 });
-
-const isAdmin = (username: string, password: string) => {
-  return username === 'admin' && password === 'admin';
-};
 
 async function handleLogin(username: string, password: string) {
   try {
     const response = await login(username, password);
     if (response) {
       console.log(response);
-      alert(`\nLogin success, Hello ${username}!`);
+      Swal.fire({
+        title: 'Login success!',
+        icon: 'success',
+        confirmButtonText: 'Continue',
+        heightAuto: false, // prevent auto scroll
+        scrollbarPadding: false // prevent scrollbar changes
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = '/templates/options/options.html';
+        }
+      });
     }
   } catch (error) {
-    console.error('Error:', error);
+    Swal.fire({
+      title: 'Login failed!',
+      text: error,
+      icon: 'error',
+      confirmButtonText: 'Try again',
+      heightAuto: false,
+      scrollbarPadding: false
+    });
   }
 }
 
@@ -62,7 +81,7 @@ async function login(username: string, password: string) {
     const status = response.status;
 
     if (status === 400) {
-      throw new Error('Username already exists!');
+      throw new Error('Wrong username or password!');
     } else if (status == 500) {
       throw new Error('Server error!');
     }
@@ -71,7 +90,6 @@ async function login(username: string, password: string) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error:', error);
-    alert(error.message);
+    throw error;
   }
 }

@@ -1,21 +1,21 @@
 export type RegisterType = {
   username: string;
   password: string;
-  confirmPassword: string;
-  checked: boolean;
+  confirmPassword?: string;
+  checked?: boolean;
 };
 
 export class RegisterFormModel {
   private username: string;
   private password: string;
-  private confirmPassword: string;
-  private checked: boolean;
+  private confirmPassword?: string;
+  private checked?: boolean;
 
   constructor(registerData: RegisterType) {
     this.username = registerData.username;
     this.password = registerData.password;
-    this.confirmPassword = registerData.confirmPassword;
-    this.checked = registerData.checked;
+    this.confirmPassword = registerData.confirmPassword ?? '';
+    this.checked = registerData.checked ?? false;
   }
 
   public get getUsername(): string {

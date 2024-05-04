@@ -9,6 +9,7 @@ import {
   max,
   min
 } from '../util/formValidate';
+import Swal from 'sweetalert2';
 document.addEventListener('DOMContentLoaded', (event) => {
   const formRegister = document.querySelector('#registerForm')!;
 
@@ -46,16 +47,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
           [confirmPasswordNode]
         )
       ),
-      isValid(
-        new FormData(tickBoxNode.checked, [isRequired], tickBoxNode.parentElement!, [tickBoxNode])
-      )
+      // isValid(
+      //   new FormData(tickBoxNode.checked, [isRequired], tickBoxNode.parentElement!, [tickBoxNode])
+      // )
     ];
 
     const isValidForm = errorMsg.every((item) => !item);
 
+    const user = new RegisterFormModel({
+      username: usernameNode.value,
+      password: passwordNode.value,
+      confirmPassword: confirmPasswordNode.value
+    });
+
     if (isValidForm) {
       clearMsg();
-      handleRegister(usernameNode.value, passwordNode.value, confirmPasswordNode.value);
+      handleRegister(user.getUsername, user.getPassword, user.getConfirmPassword);
     }
   });
 });
@@ -65,10 +72,23 @@ async function handleRegister(username: string, password: string, confirmPasswor
     const response = await register(username, password, confirmPassword);
     if (response) {
       console.log(response);
-      alert('Register Success');
+      Swal.fire({
+        title: 'Register success!',
+        icon: 'success',
+        confirmButtonText: 'Continue',
+        heightAuto: false, // prevent auto scroll
+        scrollbarPadding: false // prevent scrollbar changes
+      });
     }
   } catch (error) {
-    console.error('Error:', error);
+    Swal.fire({
+      title: 'Register failed!',
+      text: error,
+      icon: 'error',
+      confirmButtonText: 'Try again',
+      heightAuto: false,
+      scrollbarPadding: false
+    });
   }
 }
 
@@ -97,7 +117,6 @@ async function register(username: string, password: string, confirmPassword: str
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error:', error);
-    alert(error.message);
+    throw error;
   }
 }
