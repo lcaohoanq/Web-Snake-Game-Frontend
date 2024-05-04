@@ -1,36 +1,33 @@
-import { FormData } from '../util/validForm';
-import { clearMsg, isRequired, isValid } from './formValidate';
+import { LoginFormModel } from '../models/loginModel';
+import { FormData } from '../models/validForm';
+import { clearMsg, isRequired, isValid } from '../util/formValidate';
 
-const form = document.querySelector('form')!;
+document.addEventListener('DOMContentLoaded', (event) => {
+  const formLogin = document.querySelector('#loginForm')!;
 
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  clearMsg();
-
-  let usernameNode = document.querySelector('#username-login')! as HTMLInputElement;
-  let passwordNode = document.querySelector('#password-login')! as HTMLInputElement;
-
-  const errorMsg = [
-    isValid(
-      new FormData(usernameNode.value, [isRequired], usernameNode.parentElement!, [usernameNode])
-    ),
-    isValid(
-      new FormData(passwordNode.value, [isRequired], passwordNode.parentElement!, [passwordNode])
-    )
-  ];
-
-  const isValidForm = errorMsg.every((item) => !item);
-
-  if (isValidForm) {
+  formLogin.addEventListener('submit', (event) => {
+    event.preventDefault();
     clearMsg();
-    // handleLogin(usernameNode, passwordNode);
-    // if (
-    //   isAdmin(usernameNode.value, passwordNode.value) ||
-    //   handleLogin(usernameNode, passwordNode)
-    // ) {
-    //   createAlert(`\nLogin success, Hello ${usernameNode.value}!`);
-    // }
-  }
+
+    let usernameNode = document.querySelector('#username-login')! as HTMLInputElement;
+    let passwordNode = document.querySelector('#password-login')! as HTMLInputElement;
+
+    const errorMsg = [
+      isValid(
+        new FormData(usernameNode.value, [isRequired], usernameNode.parentElement!, [usernameNode])
+      ),
+      isValid(
+        new FormData(passwordNode.value, [isRequired], passwordNode.parentElement!, [passwordNode])
+      )
+    ];
+
+    const isValidForm = errorMsg.every((item) => !item);
+
+    if (isValidForm) {
+      clearMsg();
+      handleLogin(usernameNode.value, passwordNode.value);
+    }
+  });
 });
 
 const isAdmin = (username: string, password: string) => {

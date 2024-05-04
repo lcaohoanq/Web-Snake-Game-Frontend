@@ -1,44 +1,63 @@
-import { FormData } from '../util/validForm';
-import { clearMsg, createMessage, isRequired, isSame, isValid, max, min } from './formValidate';
-const form = document.querySelector('form')! as HTMLFormElement;
+import { RegisterFormModel } from '../models/registerModel';
+import { FormData } from '../models/validForm';
+import {
+  clearMsg,
+  createMessage,
+  isRequired,
+  isSame,
+  isValid,
+  max,
+  min
+} from '../util/formValidate';
+document.addEventListener('DOMContentLoaded', (event) => {
+  const formRegister = document.querySelector('#registerForm')!;
 
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  clearMsg();
-
-  let usernameNode = document.querySelector('#username-register')! as HTMLInputElement;
-  let passwordNode = document.querySelector('#password-register')! as HTMLInputElement;
-  let confirmPasswordNode = document.querySelector('#confirmPassword')! as HTMLInputElement;
-  let tickBoxNode = document.querySelector('#tickBox')! as HTMLInputElement;
-
-  const errorMsg = [
-    isValid(
-      new FormData(usernameNode.value, [isRequired], usernameNode.parentElement!, [usernameNode])
-    ),
-    isValid(
-      new FormData(passwordNode.value, [isRequired, min(8), max(30)], passwordNode.parentElement!, [
-        passwordNode
-      ])
-    ),
-    isValid(
-      new FormData(
-        confirmPasswordNode.value,
-        [isRequired, min(8), max(30), isSame(passwordNode.value, 'password', 'confirmed-password')],
-        confirmPasswordNode.parentElement!,
-        [confirmPasswordNode]
-      )
-    ),
-    isValid(
-      new FormData(tickBoxNode.checked, [isRequired], tickBoxNode.parentElement!, [tickBoxNode])
-    )
-  ];
-
-  const isValidForm = errorMsg.every((item) => !item);
-
-  if (isValidForm) {
+  formRegister.addEventListener('submit', (event) => {
+    event.preventDefault();
     clearMsg();
-    handleRegister(usernameNode.value, passwordNode.value, confirmPasswordNode.value);
-  }
+
+    let usernameNode = document.querySelector('#username-register')! as HTMLInputElement;
+    let passwordNode = document.querySelector('#password-register')! as HTMLInputElement;
+    let confirmPasswordNode = document.querySelector('#confirmPassword')! as HTMLInputElement;
+    let tickBoxNode = document.querySelector('#tickBox')! as HTMLInputElement;
+
+    const errorMsg = [
+      isValid(
+        new FormData(usernameNode.value, [isRequired], usernameNode.parentElement!, [usernameNode])
+      ),
+      isValid(
+        new FormData(
+          passwordNode.value,
+          [isRequired, min(8), max(30)],
+          passwordNode.parentElement!,
+          [passwordNode]
+        )
+      ),
+      isValid(
+        new FormData(
+          confirmPasswordNode.value,
+          [
+            isRequired,
+            min(8),
+            max(30),
+            isSame(passwordNode.value, 'password', 'confirmed-password')
+          ],
+          confirmPasswordNode.parentElement!,
+          [confirmPasswordNode]
+        )
+      ),
+      isValid(
+        new FormData(tickBoxNode.checked, [isRequired], tickBoxNode.parentElement!, [tickBoxNode])
+      )
+    ];
+
+    const isValidForm = errorMsg.every((item) => !item);
+
+    if (isValidForm) {
+      clearMsg();
+      handleRegister(usernameNode.value, passwordNode.value, confirmPasswordNode.value);
+    }
+  });
 });
 
 async function handleRegister(username: string, password: string, confirmPassword: string) {

@@ -3,7 +3,7 @@ import {
   IParaObject,
   ValidationFunctionStringType,
   ValidationFunctionType
-} from '../controllers/formValidate';
+} from '../util/formValidate';
 
 export class FormData {
   value: string | boolean;
