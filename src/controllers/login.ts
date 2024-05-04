@@ -1,17 +1,17 @@
-import { LoginFormModel } from '../models/loginModel';
 import Swal from 'sweetalert2';
+import { LoginFormModel } from '../models/loginModel';
 import { FormData } from '../models/validForm';
 import { clearMsg, isRequired, isValid } from '../util/formValidate';
 
-document.addEventListener('DOMContentLoaded', (event) => {
-  const formLogin = document.querySelector('#loginForm')!;
+document.addEventListener('DOMContentLoaded', () => {
+  const formLogin = document.querySelector('#loginForm')! as HTMLFormElement;
 
   formLogin.addEventListener('submit', (event) => {
     event.preventDefault();
     clearMsg();
 
-    let usernameNode = document.querySelector('#username-login')! as HTMLInputElement;
-    let passwordNode = document.querySelector('#password-login')! as HTMLInputElement;
+    const usernameNode = document.querySelector('#username-login')! as HTMLInputElement;
+    const passwordNode = document.querySelector('#password-login')! as HTMLInputElement;
 
     const errorMsg = [
       isValid(
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const user = new LoginFormModel({
       username: usernameNode.value,
       password: passwordNode.value
-    })
+    });
 
     if (isValidForm) {
       clearMsg();
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 async function handleLogin(username: string, password: string) {
   try {
-    const response = await login(username, password);
+    const response = (await login(username, password)) as any;
     if (response) {
       console.log(response);
       Swal.fire({

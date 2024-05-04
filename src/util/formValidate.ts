@@ -1,7 +1,7 @@
-//rules validate
-//username         : isRequired
-//password         : isRequired, min 8, max 30
-//confirmedPassword: isRequired, min 8, max 30, isSame(password)
+// rules validate
+// username         : isRequired
+// password         : isRequired, min 8, max 30
+// confirmedPassword: isRequired, min 8, max 30, isSame(password)
 
 export type ValidationFunctionStringType = (value: string) => string;
 export type ValidationFunctionType = (value: string | boolean) => string;
@@ -18,11 +18,6 @@ export const isRequired: ValidationFunctionStringType = (value: string) => {
   return value == '' ? ' (*) Field is required' : '';
 };
 
-export const createMessage =
-  (msg: string): ValidationFunctionStringType =>
-  (value: string) =>
-    value == '' ? ` (*) ${msg}` : '';
-
 export const min =
   (num: number): ValidationFunctionStringType =>
   (value: string) =>
@@ -37,7 +32,7 @@ export const isSame =
   (value: string) =>
     paramValue == value ? '' : `${fieldName1} not match ${fieldName2}`;
 
-//create error message, show error message on UIe
+// create error message, show error message on UIe
 export const createMsg = (parentNode: HTMLElement, controlNode: ControlNodeType, msg: string) => {
   const invalidDiv = document.createElement('div');
   invalidDiv.className = 'invalid-feedback';
@@ -49,15 +44,15 @@ export const createMsg = (parentNode: HTMLElement, controlNode: ControlNodeType,
 };
 
 export const isValid = (paraObject: IParaObject) => {
-  let { value, funcs, parentNode, controlNode } = paraObject;
+  const { value, funcs, parentNode, controlNode } = paraObject;
 
   for (const funcCheck of funcs) {
     if (typeof value == 'string') {
-      let msg = funcCheck(value);
+      const msg = funcCheck(value);
       createMsg(parentNode, controlNode, msg);
       return msg;
     } else if (typeof value == 'boolean') {
-      let msg = '(*) Please check the box to finish the registration';
+      const msg = '(*) Please check the box to finish the registration';
       createMsg(parentNode, controlNode, msg);
       return msg;
     }
@@ -65,7 +60,7 @@ export const isValid = (paraObject: IParaObject) => {
   return '';
 };
 
-//clear all error message
+// clear all error message
 export const clearMsg = () => {
   document.querySelectorAll('.is-invalid').forEach((inputItem) => {
     inputItem.classList.remove('is-invalid');

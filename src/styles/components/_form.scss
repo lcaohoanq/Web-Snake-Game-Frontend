@@ -2,9 +2,7 @@
 @import '../abstracts/mixins';
 
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  @include flex-custom(column, '', '', 20px);
   margin-bottom: 20px;
 
   .submit-btn {

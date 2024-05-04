@@ -1,3 +1,5 @@
+@import '../abstracts/mixins';
+
 .Logo {
   img {
     max-width: 70%;
@@ -5,10 +7,7 @@
 }
 
 #App-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+  @include flex-custom(column, center, center, 0);
   img {
     width: 90%;
   }

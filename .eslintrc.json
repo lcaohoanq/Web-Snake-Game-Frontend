@@ -1,13 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/eslintrc",
   "root": true,
-  "plugins": [
-    "prettier",
-    "@typescript-eslint",
-    "@stylistic",
-    "import",
-    "promise"
-  ],
+  "plugins": ["prettier", "@typescript-eslint", "@stylistic", "import", "promise"],
   "ignorePatterns": ["node_modules/", "dist/", "*.d.ts", "*.config.ts"],
   "extends": [
     // extends mean shareable config from devDependencies that community have created or recommended
@@ -45,11 +39,14 @@
     "@typescript-eslint/no-unsafe-argument": "warn",
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/array-type": "error",
+    "@typescript-eslint/no-unnecessary-type-assertion": "off",
     "@typescript-eslint/no-misused-promises": "warn",
     "@typescript-eslint/consistent-type-definitions": "off",
+    "@typescript-eslint/no-floating-promises": "warn",
     "@stylistic/semi": ["error", "always"],
     "@stylistic/arrow-parens": ["error", "always"],
     "@stylistic/brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
     "@stylistic/member-delimiter-style": [
       "error",
       {
@@ -57,8 +54,9 @@
         "singleline": { "delimiter": "semi", "requireLast": false }
       }
     ],
-    "comma-dangle": ["error", "only-multiline"],
+    "@stylistic/comma-dangle": "off",
     "promise/always-return": "warn",
+    "no-useless-catch": "warn",
     // override prettier
     "prettier/prettier": [
       "error",

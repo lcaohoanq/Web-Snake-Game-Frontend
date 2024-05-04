@@ -1,30 +1,29 @@
 @import '../abstracts/mixins';
+@import '../abstracts/variables';
 
 .Button {
-  width: 100%;
-  margin: 0 auto;
   @include flex-column-container;
-  gap: 20px;
-
-  a.log,
-  a.reg,
-  a.continue {
-    font-size: 2rem;
-    width: 150px;
-  }
 
   .Login-Register-Container {
     @include flex-row-container;
 
     .card_button a {
-      @include button-styles-sugar(15vw, 8vh);
+      @include button-styles-sugar($button-home-width, $button-home-height);
       @include text-styles(white, 3rem, bold);
       &.log {
-        @include button-press-effect(#19b719, #118011, #118011);
+        @include button-press-effect(
+          $login-background-color,
+          $login-border-color,
+          $login-shadow-color
+        );
       }
 
       &.reg {
-        @include button-press-effect(#ff0000, #b30000, #b30000);
+        @include button-press-effect(
+          $register-background-color,
+          $register-border-color,
+          $register-shadow-color
+        );
       }
     }
   }
@@ -33,10 +32,14 @@
     @include flex-row-container;
 
     .card_button a {
-      @include button-styles-sugar(27vw, 8vh);
+      @include button-styles-sugar(27vw, 10vh);
       @include text-styles(white, 3rem, bold);
       &.continue {
-        @include button-press-effect(#4d96ff, #002299, #0027b6);
+        @include button-press-effect(
+          $continue-background-color,
+          $continue-border-color,
+          $continue-shadow-color
+        );
       }
     }
   }

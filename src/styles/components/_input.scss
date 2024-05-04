@@ -1,5 +1,7 @@
+@import '../abstracts/mixins';
+
 .input-container {
-  padding: 0 50px 0 50px;
+  @include setPadding(0, 50px, 0, 50px);
 
   input {
     border: none;
@@ -10,7 +12,7 @@
     background-color: #f0f0f0;
 
     &:hover {
-      background-color: #ffffff;
+      background-color: #e4e4e4;
     }
   }
 
@@ -19,7 +21,6 @@
   #username-register,
   #password-register,
   #confirmPassword {
-    width: 250px;
-    height: 50px;
+    @include dimensions(250px, 50px);
   }
 }

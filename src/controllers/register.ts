@@ -1,26 +1,18 @@
+import Swal from 'sweetalert2';
 import { RegisterFormModel } from '../models/registerModel';
 import { FormData } from '../models/validForm';
-import {
-  clearMsg,
-  createMessage,
-  isRequired,
-  isSame,
-  isValid,
-  max,
-  min
-} from '../util/formValidate';
-import Swal from 'sweetalert2';
-document.addEventListener('DOMContentLoaded', (event) => {
-  const formRegister = document.querySelector('#registerForm')!;
+import { clearMsg, isRequired, isSame, isValid, max, min } from '../util/formValidate';
+document.addEventListener('DOMContentLoaded', () => {
+  const formRegister = document.querySelector('#registerForm')! as HTMLFormElement;
 
   formRegister.addEventListener('submit', (event) => {
     event.preventDefault();
     clearMsg();
 
-    let usernameNode = document.querySelector('#username-register')! as HTMLInputElement;
-    let passwordNode = document.querySelector('#password-register')! as HTMLInputElement;
-    let confirmPasswordNode = document.querySelector('#confirmPassword')! as HTMLInputElement;
-    let tickBoxNode = document.querySelector('#tickBox')! as HTMLInputElement;
+    const usernameNode = document.querySelector('#username-register')! as HTMLInputElement;
+    const passwordNode = document.querySelector('#password-register')! as HTMLInputElement;
+    const confirmPasswordNode = document.querySelector('#confirmPassword')! as HTMLInputElement;
+    const tickBoxNode = document.querySelector('#tickBox')! as HTMLInputElement;
 
     const errorMsg = [
       isValid(
@@ -47,9 +39,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
           [confirmPasswordNode]
         )
       ),
-      // isValid(
-      //   new FormData(tickBoxNode.checked, [isRequired], tickBoxNode.parentElement!, [tickBoxNode])
-      // )
+      isValid(
+        new FormData(tickBoxNode.checked, [isRequired], tickBoxNode.parentElement!, [tickBoxNode])
+      )
     ];
 
     const isValidForm = errorMsg.every((item) => !item);
@@ -69,7 +61,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 async function handleRegister(username: string, password: string, confirmPassword: string) {
   try {
-    const response = await register(username, password, confirmPassword);
+    const response = (await register(username, password, confirmPassword)) as any;
     if (response) {
       console.log(response);
       Swal.fire({
@@ -92,7 +84,11 @@ async function handleRegister(username: string, password: string, confirmPasswor
   }
 }
 
-async function register(username: string, password: string, confirmPassword: string) {
+async function register(
+  username: string,
+  password: string,
+  confirmPassword: string
+): Promise<void> {
   try {
     const response = await fetch('https://web-snake-game-backend.onrender.com/users/register', {
       method: 'POST',
