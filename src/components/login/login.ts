@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2';
-import { LoginFormModel } from '../models/loginModel';
-import { FormData } from '../models/validForm';
-import { clearMsg, isRequired, isValid } from '../util/formValidate';
+import { LoginFormModel } from '../../models/loginModel';
+import { FormData } from '../../models/validForm';
+import { clearMsg, isRequired, isValid } from '../../util/formValidate';
 
 document.addEventListener('DOMContentLoaded', () => {
   const formLogin = document.querySelector('#loginForm')! as HTMLFormElement;
@@ -49,7 +49,7 @@ async function handleLogin(username: string, password: string) {
         scrollbarPadding: false // prevent scrollbar changes
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.href = '/templates/options/options.html';
+          window.location.href = '/templates/options.html';
         }
       });
     }

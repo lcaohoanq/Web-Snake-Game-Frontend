@@ -26,11 +26,11 @@ export class RegisterFormModel {
     return this.password;
   }
 
-  public get getConfirmPassword(): string {
+  public get getConfirmPassword(): string | undefined {
     return this.confirmPassword;
   }
 
-  public get getChecked(): boolean {
+  public get getChecked(): boolean | undefined {
     return this.checked;
   }
 }
