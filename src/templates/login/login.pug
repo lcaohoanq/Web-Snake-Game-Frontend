@@ -1,0 +1,33 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(href="../../assets/favicon.ico", rel="icon", type="image/png")
+  title Login
+  body
+    .App
+      section#App-logo
+        img(src='../../assets/images/logo.png', alt='Snake-Logo')
+      section#App-data
+        .title
+          h1 Sign In
+        form
+          .input-container
+            input.form-control(autofocus, placeholder='Username', type='username', id='username-login')
+          .input-container
+            input.form-control(placeholder='Password', type='password', id='password-login')
+          .forgot-password
+            a(href='../forgotPassword/forgotPassword.html') Forgot password?
+          .submit-btn#submit-login
+            button Submit
+        .google-button
+          button.google-btn(id='log-google')
+            .google-icon-wrapper
+              img.google-icon(src='https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg')
+            .btn-text
+              p Sign in with Google
+        .bottom-btn
+          p Not a member?
+          a(href='../register/register.html') Sign up here
+    script(src='../../../dist/main.js')

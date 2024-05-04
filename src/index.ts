@@ -8,4 +8,10 @@ importAll(require.context('./styles/', true, /scss/i));
 importAll(require.context('./components/', true, /ts/i));
 
 //import image
-importAll(require.context('./assets/images', false, /\.(gif|png|jpe?g|svg)$/i));
+importAll(require.context('./assets/images', false, /\.(gif|png|jpe?g|svg|ico)$/i));
+
+//import controller
+importAll(require.context('./controllers/', true, /ts/i));
+
+//import constants
+importAll(require.context('./constants/', true, /ts/i));
