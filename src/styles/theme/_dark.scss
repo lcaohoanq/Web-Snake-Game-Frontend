@@ -1,11 +1,15 @@
-body {
+body#dark {
   background-color: #121212;
+
+  .App {
+    background-color: #121212;
+
+    footer a {
+      color: #ffffff;
+    }
+  }
 }
 
-.App {
-  background-color: #121212;
-}
 
-footer a {
-  color: #fff;
-}
+
+
