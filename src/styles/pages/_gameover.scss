@@ -2,7 +2,6 @@
 
 .GameOver {
   header {
-    @include flex-row-container;
     margin-bottom: 50px;
   }
 
@@ -10,43 +9,56 @@
     .Score {
       text-align: center;
       font-size: 3vw;
-      margin-bottom: 50px;
+      margin-bottom: 60px;
     }
 
     .Direction {
       width: 100%;
       margin-bottom: 5vw;
-      @include flex-custom('row', 'center', 'center', 30px);
 
       .card_button_gameover {
         background-color: $main-color;
-        @include flex-row-container;
         @include setBorderRadius(5px);
-
-        font-size: 2vw;
-        width: 200px;
-        height: 50px;
 
         a {
           color: white;
+          @include setBorderRadius(5px);
         }
 
         a#playAgain {
+          @include flex-row-container;
+          background-color: $main-color;
+
+          &:hover {
+            background-color: $main-color;
+            transition: $button-transition;
+          }
         }
 
         a#highScore {
+          @include flex-row-container;
+          background-color: $register-background-color;
+
+          &:hover {
+            background-color: $register-background-color;
+            transition: $button-transition;
+          }
         }
 
         a#mainMenu {
-        }
+          @include flex-row-container;
+          background-color: $continue-background-color;
 
-        &:hover {
-          background-color: $main-color-hover;
+          &:hover {
+            background-color: $continue-background-color;
+            transition: $button-transition;
+          }
         }
       }
     }
   }
 
   footer {
+    margin-top: 10vw;
   }
 }

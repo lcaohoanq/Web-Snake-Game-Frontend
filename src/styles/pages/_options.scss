@@ -2,7 +2,6 @@
 @import '../components/optionButton';
 
 .select-ctr {
-  background: white;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -34,7 +33,6 @@
     }
 
     &.input-preview {
-      color: black;
       position: relative;
       transition: 0.3s all ease;
 
@@ -60,6 +58,20 @@
         box-sizing: border-box;
         transition: 0.3s all ease;
       }
+    }
+  }
+}
+
+@media only screen and (min-width: 321px) and (max-width: 768px) {
+  .select-ctr {
+    width: 70%;
+  }
+
+  .select-ctr > div {
+    font-size: 2rem;
+
+    &.input-preview {
+      font-size: 1.5rem;
     }
   }
 }

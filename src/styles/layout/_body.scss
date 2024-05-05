@@ -1,35 +1,35 @@
 @import '../abstracts/mixins';
 
-@media only screen and (max-width: 320px) {
-}
-
-@media only screen and (min-width: 321px) and (max-width: 575px) {
-}
-
-@media only screen and (min-width: 576px) and (max-width: 768px) {
-  header {
-    font-size: 5vw;
-  }
-
-  .Body {
-    .Logo {
-      .logo-img {
-        width: 80%;
-      }
+@media only screen and (min-width: 321px) and (max-width: 768px) {
+  .Home {
+    header {
+      font-size: 7vw;
     }
 
-    .Button {
-      .Login-Register-Container {
-        .card_button a {
-          @include button-styles-sugar(30vw, 8vh);
-          @include text-styles(white, 3rem, bold);
+    .Body {
+      .Logo {
+        .logo-img {
+          width: 60%;
         }
       }
 
-      .Continue-Container {
-        .card_button a {
-          @include button-styles-sugar(27vw, 8vh);
-          @include text-styles(white, 3rem, bold);
+      .Button {
+        margin-top: 50px;
+        .Login-Register-Container {
+          gap: 2rem;
+          margin-bottom: 2rem;
+          .card_button a {
+            @include button-styles-sugar(35vw, 7vh);
+            @include text-styles(white, 5vw, bold);
+          }
+        }
+
+        .Continue-Container {
+          margin-bottom: 3.5rem;
+          .card_button a {
+            @include button-styles-sugar(60vw, 7vh);
+            @include text-styles(white, 5vw, bold);
+          }
         }
       }
     }
@@ -45,9 +45,58 @@
       margin-left: 50px;
     }
   }
+
+  .GameOver {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15vw;
+
+    header {
+      font-size: 15vw;
+    }
+    main {
+      .Score {
+        font-size: 9vw;
+      }
+
+      .Direction {
+        @include flex-column-container;
+        gap: 5vh;
+        .card_button_gameover {
+          width: 200px;
+          height: 50px;
+          font-size: 5vw;
+          gap: 10px;
+
+          a#playAgain {
+            width: 200px;
+            height: 50px;
+          }
+
+          a#highScore {
+            width: 200px;
+            height: 50px;
+          }
+
+          a#mainMenu {
+            width: 200px;
+            height: 50px;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1200px) {
+  .Home {
+    header {
+      font-size: 7vw;
+    }
+  }
+
   .App {
     display: flex;
     flex-direction: row;
@@ -55,68 +104,158 @@
       width: 70%;
     }
   }
+
+  .GameOver {
+    header {
+      font-size: 10vw;
+    }
+    main {
+      .Score {
+        font-size: 6vw;
+      }
+
+      .Direction {
+        @include flex-column-container;
+        gap: 5vh;
+        .card_button_gameover {
+          width: 200px;
+          height: 70px;
+          font-size: 3vw;
+          gap: 10px;
+
+          a#playAgain {
+            @include flex-row-container;
+            width: 200px;
+            height: 70px;
+            background-color: $main-color;
+          }
+
+          a#highScore {
+            @include flex-row-container;
+            width: 200px;
+            height: 70px;
+            background-color: $register-background-color;
+          }
+
+          a#mainMenu {
+            @include flex-row-container;
+            width: 200px;
+            height: 70px;
+            background-color: $continue-background-color;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (min-width: 1201px) and (max-width: 1920px) {
-  //Home Page
-  header {
-    font-size: 8rem;
-  }
+  .Home {
+    header {
+      font-size: 8rem;
+    }
 
-  .Body {
-    @include flex-row-container;
-    padding: 2rem;
-  }
+    .Body {
+      @include flex-row-container;
+      padding: 2rem;
 
-  .Button {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-  }
+      .Logo img {
+        width: 100%;
+        height: auto;
+      }
 
-  .Login-Register-Container {
-    gap: 3rem;
-  }
+      .Button {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
 
-  .Button a.log {
-    font-size: 4rem;
-    width: 250px;
-    height: 100px;
-  }
+        .Login-Register-Container {
+          gap: 3rem;
+        }
 
-  .Button a.reg {
-    font-size: 4rem;
-    width: 250px;
-    height: 100px;
-  }
+        a {
+          .log {
+            font-size: 4rem;
+            width: 250px;
+            height: 100px;
+          }
 
-  .Button a.continue {
-    font-size: 3rem;
-    width: 400px;
-    height: 100px;
-  }
+          .reg {
+            font-size: 4rem;
+            width: 250px;
+            height: 100px;
+          }
 
-  .Logo img {
-    /* margin-top: 1rem; */
-    width: 100%;
-    height: auto;
-  }
+          .continue {
+            font-size: 3rem;
+            width: 400px;
+            height: 100px;
+          }
+        }
+      }
+    }
 
-  footer p {
-    font-size: 1.5rem;
-  }
+    footer {
+      p {
+        font-size: 1.5rem;
+      }
 
-  footer a {
-    margin-bottom: 1rem;
-    font-size: 2rem;
+      a {
+        margin-bottom: 1rem;
+        font-size: 2rem;
+      }
+    }
   }
 
   // Login, Register page
   .App {
     display: flex;
     flex-direction: row;
+  }
+
+  .GameOver {
+    header {
+      font-size: 8vw;
+    }
+    main {
+      .Score {
+        font-size: 4vw;
+      }
+
+      .Direction {
+        @include flex-column-container;
+        gap: 5vh;
+        .card_button_gameover {
+          width: 300px;
+          height: 80px;
+          font-size: 3vw;
+          gap: 10px;
+
+          a#playAgain {
+            @include flex-row-container;
+            width: 300px;
+            height: 80px;
+            background-color: $main-color;
+          }
+
+          a#highScore {
+            @include flex-row-container;
+            width: 300px;
+            height: 80px;
+            background-color: $register-background-color;
+          }
+
+          a#mainMenu {
+            @include flex-row-container;
+            width: 300px;
+            height: 80px;
+            background-color: $continue-background-color;
+          }
+        }
+      }
+    }
   }
 }
