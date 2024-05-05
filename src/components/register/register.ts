@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2';
-import { RegisterFormModel } from '../models/registerModel';
-import { FormData } from '../models/validForm';
-import { clearMsg, isRequired, isSame, isValid, max, min } from '../util/formValidate';
+import { RegisterFormModel } from '../../models/registerModel';
+import { FormData } from '../../models/validForm';
+import { clearMsg, isRequired, isSame, isValid, max, min } from '../../util/formValidate';
 document.addEventListener('DOMContentLoaded', () => {
   const formRegister = document.querySelector('#registerForm')! as HTMLFormElement;
 
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (isValidForm) {
       clearMsg();
-      handleRegister(user.getUsername, user.getPassword, user.getConfirmPassword);
+      handleRegister(usernameNode.value, passwordNode.value, confirmPasswordNode.value);
     }
   });
 });

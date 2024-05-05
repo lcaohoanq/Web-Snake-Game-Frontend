@@ -2,7 +2,7 @@
 @import '../components/optionButton';
 
 .select-ctr {
-  background: #121212;
+  background: white;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -18,18 +18,23 @@
     cursor: pointer;
 
     &.input {
-      background: #fff;
-      color: #777;
+      background: $main-color;
+      color: white;
       border-radius: 2px;
       box-shadow: 0 2px 15px 3px rgba(0, 0, 0, 0.1);
 
       &.active {
         color: #2bcd2b;
       }
+
+      &:hover {
+        background-color: $main-color-hover;
+        transition: $button-transition;
+      }
     }
 
     &.input-preview {
-      color: rgba(255, 255, 255, 0.75);
+      color: black;
       position: relative;
       transition: 0.3s all ease;
 

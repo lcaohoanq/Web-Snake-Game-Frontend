@@ -1,6 +1,5 @@
 import {
   ControlNodeType,
-  IParaObject,
   ValidationFunctionStringType,
   ValidationFunctionType
 } from '../util/formValidate';
