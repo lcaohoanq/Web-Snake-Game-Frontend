@@ -65,24 +65,24 @@
         @include flex-column-container;
         gap: 5vh;
         .card_button_gameover {
-          width: 200px;
-          height: 50px;
+          width: 50vw;
+          height: 7vh;
           font-size: 5vw;
           gap: 10px;
 
           a#playAgain {
-            width: 200px;
-            height: 50px;
+            width: 50vw;
+            height: 7vh;
           }
 
           a#highScore {
-            width: 200px;
-            height: 50px;
+            width: 50vw;
+            height: 7vh;
           }
 
           a#mainMenu {
-            width: 200px;
-            height: 50px;
+            width: 50vw;
+            height: 7vh;
           }
         }
       }
@@ -229,29 +229,29 @@
         @include flex-column-container;
         gap: 5vh;
         .card_button_gameover {
-          width: 300px;
-          height: 80px;
+          width: 30vw;
+          height: 6vw;
           font-size: 3vw;
-          gap: 10px;
+          gap: 1vw;
 
           a#playAgain {
             @include flex-row-container;
-            width: 300px;
-            height: 80px;
+            width: 30vw;
+            height: 6vw;
             background-color: $main-color;
           }
 
           a#highScore {
             @include flex-row-container;
-            width: 300px;
-            height: 80px;
+            width: 30vw;
+            height: 6vw;
             background-color: $register-background-color;
           }
 
           a#mainMenu {
             @include flex-row-container;
-            width: 300px;
-            height: 80px;
+            width: 30vw;
+            height: 6vw;
             background-color: $continue-background-color;
           }
         }
