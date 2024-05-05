@@ -6,11 +6,17 @@ html
     link(href="../assets/images/favicon.ico", rel="icon", type="image/png")
     title Game Over
   body
-    h1 Game Over
-    p Your score: #{score}
-    p
-      a(href="/") Play again
-    p
-      a(href="/scores") High scores
-    p
-      a(href="/") Main menu
+    .GameOver
+      header Game Over
+      main 
+        .Score
+          p Your score: 99
+        .Direction 
+          .card_button_gameover  
+            a#highScore(href="#") High scores
+          .card_button_gameover 
+            a#playAgain(href="./options.html") Play again
+          .card_button_gameover  
+            a#mainMenu(href="../index.html") Main menu
+      footer 
+        p Made by lcaohoanq with ❤️ 
