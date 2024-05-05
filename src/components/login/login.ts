@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Swal from 'sweetalert2';
 import { LoginFormModel } from '../../models/loginModel';
 import { FormData } from '../../models/validForm';
@@ -40,7 +41,6 @@ async function handleLogin(username: string, password: string) {
   try {
     const response = (await login(username, password)) as any;
     if (response) {
-      console.log(response);
       Swal.fire({
         title: 'Login success!',
         icon: 'success',
@@ -65,31 +65,19 @@ async function handleLogin(username: string, password: string) {
   }
 }
 
-async function login(username: string, password: string) {
-  try {
-    const response = await fetch('https://web-snake-game-backend.onrender.com/users/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        username,
-        password
-      })
-    });
+async function login(username: string, password: string): Promise<any> {
+  const response = await axios.post('https://web-snake-game-backend.onrender.com/users/login', {
+    username,
+    password
+  });
 
-    const status = response.status;
+  const status = response.status;
 
-    if (status === 400) {
-      throw new Error('Wrong username or password!');
-    } else if (status == 500) {
-      throw new Error('Server error!');
-    }
-
-    // reach here we receive a status 200
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    throw error;
+  if (status === 400) {
+    throw new Error('Wrong username or password!');
+  } else if (status == 500) {
+    throw new Error('Server error!');
   }
+
+  return response.data;
 }
