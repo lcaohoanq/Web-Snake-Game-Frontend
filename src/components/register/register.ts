@@ -1,7 +1,12 @@
+import axios from 'axios';
+import { config } from 'dotenv';
 import Swal from 'sweetalert2';
-import { RegisterFormModel } from '../../models/registerModel';
+import { RegisterFormModel } from '../../models/register.model';
 import { FormData } from '../../models/validForm';
 import { clearMsg, isRequired, isSame, isValid, max, min } from '../../util/formValidate';
+
+config();
+
 document.addEventListener('DOMContentLoaded', () => {
   const formRegister = document.querySelector('#registerForm')! as HTMLFormElement;
 
@@ -45,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const isValidForm = errorMsg.every((item) => !item);
+    console.log(`${process.env.HOST}` + `${process.env.REGISTER}`);
 
     const user = new RegisterFormModel({
       username: usernameNode.value,
@@ -90,16 +96,10 @@ async function register(
   confirmPassword: string
 ): Promise<void> {
   try {
-    const response = await fetch('https://web-snake-game-backend.onrender.com/users/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        username,
-        password,
-        confirmPassword
-      })
+    const response = await axios.post(`${process.env.HOST}` + `${process.env.REGISTER}`, {
+      username,
+      password,
+      confirmPassword
     });
 
     const status = response.status;

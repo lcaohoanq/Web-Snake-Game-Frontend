@@ -43,6 +43,7 @@
     "@typescript-eslint/no-misused-promises": "warn",
     "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/no-floating-promises": "warn",
+    "@typescript-eslint/no-unused-vars": "warn",
     "@stylistic/semi": ["error", "always"],
     "@stylistic/arrow-parens": ["error", "always"],
     "@stylistic/brace-style": ["error", "1tbs", { "allowSingleLine": true }],
@@ -55,6 +56,8 @@
       }
     ],
     "@stylistic/comma-dangle": "off",
+    "@stylistic/indent": ["warn", 2],
+    "@stylistic/operator-linebreak": "off",
     "promise/always-return": "warn",
     "no-useless-catch": "warn",
     // override prettier

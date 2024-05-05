@@ -22,3 +22,18 @@ export class FormData {
     this.controlNode = controlNode;
   }
 }
+
+// RegisterClass will construct the data from form
+/*
+new FormData(
+          confirmPasswordNode.value,
+          [
+            isRequired,
+            min(8),
+            max(30),
+            isSame(passwordNode.value, 'password', 'confirmed-password')
+          ],
+          confirmPasswordNode.parentElement!,
+          [confirmPasswordNode]
+        )
+*/

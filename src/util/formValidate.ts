@@ -3,6 +3,8 @@
 // password         : isRequired, min 8, max 30
 // confirmedPassword: isRequired, min 8, max 30, isSame(password)
 
+import { FormData } from '../models/validForm';
+
 export type ValidationFunctionStringType = (value: string) => string;
 export type ValidationFunctionType = (value: string | boolean) => string;
 export type ControlNodeType = HTMLElement[];
@@ -74,3 +76,22 @@ export const clearMsg = () => {
     divMsg.remove();
   });
 };
+
+// normal required field form validation
+export const isValidForm = (...field: HTMLInputElement[]): boolean => {
+  const errorMsg = field.map((item) =>
+    isValid(new FormData(item.value, [isRequired], item.parentElement!, [item]))
+  );
+  return errorMsg.every((item) => !item);
+};
+
+// cusomize rule form validation
+export const isValidFormCustom = (...field: HTMLInputElement[]): boolean => {
+  const validations: ValidationFunctionType[] = [isRequired, min(8), max(30)] ?? [isRequired];
+  const errorMsg = field.map((item) =>
+    isValid(new FormData(item.checked ?? item.value, validations, item.parentElement!, [item]))
+  );
+  return errorMsg.every((item) => !item);
+};
+
+// isValid(usernameNode,passwordNode,confirmPasswordNode,tickBoxNode) => boolean

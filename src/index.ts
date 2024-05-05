@@ -15,3 +15,9 @@ importAll(require.context('./assets/sounds', false, /\.(wav)$/i));
 
 // import constants
 importAll(require.context('./constants/', true, /ts/i));
+
+// import models
+importAll(require.context('./models/', true, /ts/i));
+
+// import utils
+importAll(require.context('./util/', true, /ts/i));

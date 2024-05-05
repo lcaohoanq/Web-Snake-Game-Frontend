@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2';
-import { LoginFormModel } from '../../models/loginModel';
+import { LoginFormModel } from '../../models/login.model';
 import { FormData } from '../../models/validForm';
-import { clearMsg, isRequired, isValid } from '../../util/formValidate';
+import { clearMsg, isRequired, isValid, isValidForm } from '../../util/formValidate';
 
 document.addEventListener('DOMContentLoaded', () => {
   const formLogin = document.querySelector('#loginForm')! as HTMLFormElement;
@@ -13,23 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const usernameNode = document.querySelector('#username-login')! as HTMLInputElement;
     const passwordNode = document.querySelector('#password-login')! as HTMLInputElement;
 
-    const errorMsg = [
-      isValid(
-        new FormData(usernameNode.value, [isRequired], usernameNode.parentElement!, [usernameNode])
-      ),
-      isValid(
-        new FormData(passwordNode.value, [isRequired], passwordNode.parentElement!, [passwordNode])
-      )
-    ];
-
-    const isValidForm = errorMsg.every((item) => !item);
-
     const user = new LoginFormModel({
       username: usernameNode.value,
       password: passwordNode.value
     });
 
-    if (isValidForm) {
+    if (isValidForm(usernameNode, passwordNode)) {
       clearMsg();
       handleLogin(user.getUsername, user.getPassword);
     }
