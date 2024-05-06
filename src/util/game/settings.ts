@@ -4,8 +4,8 @@ export function setDelay(time: number): number {
   return time;
 }
 
-export function initBox(): number {
-  return 10;
+export function initBox(size: number): number {
+  return size;
 }
 
 export function initFood(box: number): FoodType {

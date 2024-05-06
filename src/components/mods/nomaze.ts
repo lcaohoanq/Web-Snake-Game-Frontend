@@ -4,14 +4,13 @@ import { loadResources } from '../../util/game/imagesLoader';
 import { updateDirection } from '../../util/game/keyDirection';
 import { initBox, initFood, initSnake, setDelay } from '../../util/game/settings';
 import { playEatSound, playGameOverSound } from '../../util/game/soundEffects';
-
 document.addEventListener('DOMContentLoaded', () => {
   const canvas = document.querySelector('#nomaze')! as HTMLCanvasElement;
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   const screenWidth = canvas.width;
   const screenHeight = canvas.height;
-
+  let score = 0;
   const context = canvas.getContext('2d')!;
   const box = initBox(10);
   const delay = setDelay(50);
@@ -52,12 +51,24 @@ document.addEventListener('DOMContentLoaded', () => {
       playEatSound().catch((error) => {
         console.error('Error playing eating sound:', error);
       });
+      score++;
       food = {
-        x: Math.floor(Math.random() * 15 + 1) * box,
-        y: Math.floor(Math.random() * 15 + 1) * box
+        x: Math.floor(Math.random() * (screenWidth / box)) * box,
+        y: Math.floor(Math.random() * (screenHeight / box)) * box
       };
     } else {
       snake.pop();
+    }
+    if (snakeX < 0) {
+      snakeX = screenWidth;
+    } else if (snakeX > screenWidth) {
+      snakeX = 0;
+    }
+
+    if (snakeY < 0) {
+      snakeY = screenHeight;
+    } else if (snakeY > screenHeight) {
+      snakeY = 0;
     }
 
     const newHead = {
@@ -65,19 +76,16 @@ document.addEventListener('DOMContentLoaded', () => {
       y: snakeY
     };
 
-    if (
-      snakeX < 0 ||
-      snakeX > screenWidth ||
-      snakeY < 0 ||
-      snakeY > screenHeight ||
-      collision(newHead, snake)
-    ) {
+    if (collision(newHead, snake)) {
       clearInterval(game);
 
+      // Play the game over sound
       playGameOverSound()
         .then(() => {
           return setTimeout(() => {
             console.log('Game over sound played');
+            // Store the score in Local Storage
+            localStorage.setItem('score', score.toString());
             window.location.href = '../../templates/gameover.html';
           }, 5000);
         })

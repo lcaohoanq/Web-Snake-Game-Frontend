@@ -2,9 +2,15 @@ import { modesList } from '../../models/options.models';
 import { playIntroSound } from '../../util/game/soundEffects';
 
 document.addEventListener('DOMContentLoaded', () => {
-  playIntroSound().then(() => {
-    console.log('Intro sound played');
-  });
+  if (window.location.pathname === '/templates/options.html') {
+    playIntroSound()
+      .then(() => {
+        return true;
+      })
+      .catch((error) => {
+        console.error('Error playing intro sound:', error);
+      });
+  }
 
   const mode = document.querySelectorAll('.input')!;
 
