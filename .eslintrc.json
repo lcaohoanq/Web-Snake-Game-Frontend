@@ -57,6 +57,7 @@
       }
     ],
     "@stylistic/comma-dangle": "off",
+    "@stylistic/operator-linebreak": "off",
     "promise/always-return": "warn",
     "no-useless-catch": "warn",
     // override prettier

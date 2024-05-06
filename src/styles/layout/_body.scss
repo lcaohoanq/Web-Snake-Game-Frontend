@@ -58,17 +58,16 @@
     }
     main {
       .Score {
-        font-size: 9vw;
+        font-size: 7vw;
       }
 
       .Direction {
         @include flex-column-container;
-        gap: 5vh;
         .card_button_gameover {
           width: 50vw;
           height: 7vh;
           font-size: 5vw;
-          gap: 10px;
+          @include setMargin(0, 0, 2vh, 0);
 
           a#playAgain {
             width: 50vw;
@@ -107,44 +106,47 @@
 
   .GameOver {
     header {
-      font-size: 10vw;
+      font-size: 15vw;
     }
     main {
       .Score {
-        font-size: 6vw;
+        font-size: 7vw;
       }
 
       .Direction {
         @include flex-column-container;
-        gap: 5vh;
         .card_button_gameover {
-          width: 200px;
-          height: 70px;
-          font-size: 3vw;
-          gap: 10px;
+          width: 40vw;
+          height: 8vh;
+          font-size: 5vw;
+
+          @include setMargin(0, 0, 4vh, 0);
 
           a#playAgain {
             @include flex-row-container;
-            width: 200px;
-            height: 70px;
+            width: 40vw;
+            height: 8vh;
             background-color: $main-color;
           }
 
           a#highScore {
             @include flex-row-container;
-            width: 200px;
-            height: 70px;
+            width: 40vw;
+            height: 8vh;
             background-color: $register-background-color;
           }
 
           a#mainMenu {
             @include flex-row-container;
-            width: 200px;
-            height: 70px;
+            width: 40vw;
+            height: 8vh;
             background-color: $continue-background-color;
           }
         }
       }
+    }
+    footer {
+      margin-top: 15vh;
     }
   }
 }
@@ -222,17 +224,17 @@
     }
     main {
       .Score {
-        font-size: 4vw;
+        font-size: 3vw;
       }
 
       .Direction {
         @include flex-column-container;
-        gap: 5vh;
         .card_button_gameover {
           width: 30vw;
           height: 6vw;
           font-size: 3vw;
-          gap: 1vw;
+
+          @include setMargin(0, 0, 2vh, 0);
 
           a#playAgain {
             @include flex-row-container;

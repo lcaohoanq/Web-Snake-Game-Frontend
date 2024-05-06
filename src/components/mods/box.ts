@@ -4,23 +4,30 @@ import { loadResources } from '../../util/game/imagesLoader';
 import { updateDirection } from '../../util/game/keyDirection';
 import { initBox, initFood, initSnake, setDelay } from '../../util/game/settings';
 import { playEatSound, playGameOverSound } from '../../util/game/soundEffects';
+
 document.addEventListener('DOMContentLoaded', () => {
-  const canvas = document.querySelector('#nomaze')! as HTMLCanvasElement;
+  const canvas = document.querySelector('#box')! as HTMLCanvasElement;
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   const screenWidth = canvas.width;
   const screenHeight = canvas.height;
-  let score = 0;
+
+  const minX = 30;
+  const minY = 30;
+  const maxX = screenWidth - 30;
+  const maxY = screenHeight - 30;
+
   const context = canvas.getContext('2d')!;
   const box = initBox(10);
   const delay = setDelay(50);
   const snake = initSnake(box);
   let food = initFood(box);
+  let score = 0;
 
   document.addEventListener('keydown', updateDirection);
 
   async function draw(): Promise<void> {
-    const { headImage, dotImage, appleImage } = await loadResources();
+    const { headImage, dotImage, appleImage, wallImage } = await loadResources();
     context.clearRect(0, 0, canvas.width, canvas.height);
 
     for (let i = 0; i < snake.length; i++) {
@@ -29,6 +36,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     context.drawImage(appleImage, food.x, food.y, box, box);
+
+    // draw the top and bottom walls
+    for (let i = 0; i < canvas.width; i += box) {
+      context.drawImage(wallImage, i, 0, box, box);
+      context.drawImage(wallImage, i, canvas.height - box, box, box);
+    }
+
+    // draw the second layer of top and bottom walls
+    for (let i = 0; i < canvas.width; i += box) {
+      context.drawImage(wallImage, i, box, box, box);
+      context.drawImage(wallImage, i, canvas.height - 2 * box, box, box);
+    }
+
+    // draw the third layer of top and bottom walls
+    for (let i = 0; i < canvas.width; i += box) {
+      context.drawImage(wallImage, i, 2 * box, box, box);
+      context.drawImage(wallImage, i, canvas.height - 3 * box, box, box);
+    }
+
+    // draw the left and right walls
+    for (let i = 0; i < canvas.height; i += box) {
+      context.drawImage(wallImage, 0, i, box, box);
+      context.drawImage(wallImage, canvas.width - box, i, box, box);
+    }
+
+    // draw the second layer of left and right walls
+    for (let i = 0; i < canvas.height; i += box) {
+      context.drawImage(wallImage, box, i, box, box);
+      context.drawImage(wallImage, canvas.width - 2 * box, i, box, box);
+    }
+
+    // draw the third layer of left and right walls
+    for (let i = 0; i < canvas.height; i += box) {
+      context.drawImage(wallImage, 2 * box, i, box, box);
+      context.drawImage(wallImage, canvas.width - 3 * box, i, box, box);
+    }
 
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
@@ -39,36 +82,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (direction == 'RIGHT') snakeX += box;
     if (direction == 'DOWN') snakeY += box;
 
-    // Handle wall collisions
-    if (snakeX >= screenWidth) snakeX = 0;
-    if (snakeX < 0) snakeX = screenWidth - box;
-    if (snakeY >= screenHeight) snakeY = 0;
-    if (snakeY < 0) snakeY = screenHeight - box;
-
     if (snakeX == food.x && snakeY == food.y) {
-      // Play the eating sound
       // Play the eating sound
       playEatSound().catch((error) => {
         console.error('Error playing eating sound:', error);
       });
       score++;
       food = {
-        x: Math.floor(Math.random() * (screenWidth / box)) * box,
-        y: Math.floor(Math.random() * (screenHeight / box)) * box
+        x: Math.floor(Math.random() * ((maxX - minX) / box)) * box + minX,
+        y: Math.floor(Math.random() * ((maxY - minY) / box)) * box + minY
       };
     } else {
       snake.pop();
-    }
-    if (snakeX < 0) {
-      snakeX = screenWidth;
-    } else if (snakeX > screenWidth) {
-      snakeX = 0;
-    }
-
-    if (snakeY < 0) {
-      snakeY = screenHeight;
-    } else if (snakeY > screenHeight) {
-      snakeY = 0;
     }
 
     const newHead = {
@@ -76,10 +101,15 @@ document.addEventListener('DOMContentLoaded', () => {
       y: snakeY
     };
 
-    if (collision(newHead, snake)) {
+    if (
+      snakeX <= 20 ||
+      snakeX >= screenWidth - 30 ||
+      snakeY <= 20 ||
+      snakeY >= screenHeight - 30 ||
+      collision(newHead, snake)
+    ) {
       clearInterval(game);
 
-      // Play the game over sound
       playGameOverSound()
         .then(() => {
           return setTimeout(() => {
@@ -90,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }, 5000);
         })
         .catch((error) => {
-          console.error('Error playing game over sound:', error);
+          console.error('Error playing gameover sound:', error);
         });
     }
 

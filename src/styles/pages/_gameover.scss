@@ -2,14 +2,14 @@
 
 .GameOver {
   header {
-    margin-bottom: 50px;
+    margin-bottom: 2vh;
   }
 
   main {
     .Score {
       text-align: center;
       font-size: 3vw;
-      margin-bottom: 60px;
+      margin-bottom: 6vh;
     }
 
     .Direction {
@@ -59,6 +59,6 @@
   }
 
   footer {
-    margin-top: 10vw;
+    margin-top: 4vh;
   }
 }
