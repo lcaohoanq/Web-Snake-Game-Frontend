@@ -1,7 +1,7 @@
-import axios from 'axios';
 import Swal from 'sweetalert2';
 import { LoginFormModel } from '../../models/loginModel';
 import { FormData } from '../../models/validForm';
+import { getAccounts } from '../../util/account';
 import { clearMsg, isRequired, isValid } from '../../util/formValidate';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,52 +32,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (isValidForm) {
       clearMsg();
-      handleLogin(user.getUsername, user.getPassword);
+      handleLogin(user.getUsername, user.getPassword).catch((error) => {
+        console.error('Error logging in:', error);
+      });
     }
   });
 });
 
-async function handleLogin(username: string, password: string) {
+async function handleLogin(username: string, password: string): Promise<void> {
   try {
-    const response = (await login(username, password)) as any;
-    if (response) {
-      Swal.fire({
+    const accountsList = getAccounts();
+    const account = accountsList.find(
+      (acc) => acc.username === username && acc.password === password
+    );
+
+    if (account) {
+      await Swal.fire({
         title: 'Login success!',
+        text: 'Hi, ' + username + '!',
         icon: 'success',
         confirmButtonText: 'Continue',
-        heightAuto: false, // prevent auto scroll
-        scrollbarPadding: false // prevent scrollbar changes
+        heightAuto: false,
+        scrollbarPadding: false
       }).then((result) => {
         if (result.isConfirmed) {
           window.location.href = '/templates/options.html';
+          return;
         }
+        throw new Error('Confirmation not received.');
+      });
+    } else {
+      throw new Error('Invalid username or password!');
+    }
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      await Swal.fire({
+        title: 'Login failed!',
+        text: error.message,
+        icon: 'error',
+        confirmButtonText: 'Try again',
+        heightAuto: false,
+        scrollbarPadding: false
       });
     }
-  } catch (error) {
-    Swal.fire({
-      title: 'Login failed!',
-      text: error,
-      icon: 'error',
-      confirmButtonText: 'Try again',
-      heightAuto: false,
-      scrollbarPadding: false
-    });
   }
-}
-
-async function login(username: string, password: string): Promise<any> {
-  const response = await axios.post('https://web-snake-game-backend.onrender.com/users/login', {
-    username,
-    password
-  });
-
-  const status = response.status;
-
-  if (status === 400) {
-    throw new Error('Wrong username or password!');
-  } else if (status == 500) {
-    throw new Error('Server error!');
-  }
-
-  return response.data;
 }

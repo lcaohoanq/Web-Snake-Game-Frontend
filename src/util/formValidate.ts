@@ -14,8 +14,8 @@ export interface IParaObject {
   controlNode: ControlNodeType;
 }
 
-export const isRequired: ValidationFunctionStringType = (value: string) => {
-  return value == '' ? ' (*) Field is required' : '';
+export const isRequired: ValidationFunctionStringType = (value: string | boolean) => {
+  return value == '' || value == false ? ' (*) Field is required' : '';
 };
 
 export const min =
@@ -47,14 +47,17 @@ export const isValid = (paraObject: IParaObject) => {
   const { value, funcs, parentNode, controlNode } = paraObject;
 
   for (const funcCheck of funcs) {
-    if (typeof value == 'string') {
+    if (typeof value === 'string') {
       const msg = funcCheck(value);
       createMsg(parentNode, controlNode, msg);
       return msg;
-    } else if (typeof value == 'boolean') {
-      const msg = '(*) Please check the box to finish the registration';
-      createMsg(parentNode, controlNode, msg);
-      return msg;
+    } else if (typeof value === 'boolean') {
+      if (!value) {
+        const msg = '(*) Please check the box to finish the registration';
+        createMsg(parentNode, controlNode, msg);
+        return msg;
+      }
+      return '';
     }
   }
   return '';
@@ -67,10 +70,6 @@ export const clearMsg = () => {
   });
 
   document.querySelectorAll('.invalid-feedback').forEach((divMsg) => {
-    divMsg.remove();
-  });
-
-  document.querySelectorAll('.invalid-feedback-tickBox').forEach((divMsg) => {
     divMsg.remove();
   });
 };

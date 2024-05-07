@@ -18,3 +18,6 @@ importAll(require.context('./constants/', true, /ts/i));
 
 // import util
 importAll(require.context('./util/', true, /ts/i));
+
+// import model
+importAll(require.context('./models/', true, /ts/i));

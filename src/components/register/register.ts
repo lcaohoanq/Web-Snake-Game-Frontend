@@ -1,6 +1,7 @@
 import Swal from 'sweetalert2';
-import { RegisterFormModel } from '../../models/registerModel';
+import { AccountType } from '../../models/account.model';
 import { FormData } from '../../models/validForm';
+import { getAccounts } from '../../util/account';
 import { clearMsg, isRequired, isSame, isValid, max, min } from '../../util/formValidate';
 document.addEventListener('DOMContentLoaded', () => {
   const formRegister = document.querySelector('#registerForm')! as HTMLFormElement;
@@ -46,73 +47,74 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const isValidForm = errorMsg.every((item) => !item);
 
-    const user = new RegisterFormModel({
-      username: usernameNode.value,
-      password: passwordNode.value,
-      confirmPassword: confirmPasswordNode.value
-    });
+    const username = usernameNode.value;
+    const password = passwordNode.value;
+    const confirmPassword = confirmPasswordNode.value;
 
     if (isValidForm) {
       clearMsg();
-      handleRegister(usernameNode.value, passwordNode.value, confirmPasswordNode.value);
+      if (isMatch(password, confirmPassword)) {
+        handleRegister(username, password).catch((error) => {
+          console.error('Error registering:', error);
+        });
+      } else {
+        Swal.fire({
+          title: 'Register failed!',
+          text: 'Password and Confirm Password do not match',
+          icon: 'warning',
+          confirmButtonText: 'Try again',
+          heightAuto: false,
+          scrollbarPadding: false
+        });
+      }
     }
   });
 });
 
-async function handleRegister(username: string, password: string, confirmPassword: string) {
-  try {
-    const response = (await register(username, password, confirmPassword)) as any;
-    if (response) {
-      console.log(response);
-      Swal.fire({
-        title: 'Register success!',
-        icon: 'success',
-        confirmButtonText: 'Continue',
-        heightAuto: false, // prevent auto scroll
-        scrollbarPadding: false // prevent scrollbar changes
-      });
-    }
-  } catch (error) {
-    Swal.fire({
-      title: 'Register failed!',
-      text: error,
-      icon: 'error',
-      confirmButtonText: 'Try again',
-      heightAuto: false,
-      scrollbarPadding: false
-    });
-  }
+function isMatch(password: string, confirmPassword: string): boolean {
+  return password === confirmPassword;
 }
 
-async function register(
-  username: string,
-  password: string,
-  confirmPassword: string
-): Promise<void> {
+async function handleRegister(username: string, password: string): Promise<void> {
   try {
-    const response = await fetch('https://web-snake-game-backend.onrender.com/users/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
+    const accountList = getAccounts();
+    const account = accountList.find((acc) => acc.username === username);
+
+    if (account) {
+      throw new Error('Username already exists!');
+    } else {
+      const newAccount: AccountType = {
         username,
         password,
-        confirmPassword
-      })
-    });
+        score: 0
+      };
+      accountList.push(newAccount);
+      localStorage.setItem('accounts', JSON.stringify(accountList));
 
-    const status = response.status;
-
-    if (status === 400) {
-      throw new Error('Username already exists!');
-    } else if (status === 500) {
-      throw new Error('Server error!');
+      await Swal.fire({
+        title: 'Register success!',
+        text: 'Login now to continue',
+        icon: 'success',
+        confirmButtonText: 'Continue',
+        heightAuto: false,
+        scrollbarPadding: false
+      }).then((result) => {
+        if (result.isConfirmed) {
+          return;
+        }
+        throw new Error('Confirmation not received.');
+      });
     }
-
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    throw error;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      await Swal.fire({
+        title: 'Register failed!',
+        text: error.message,
+        icon: 'error',
+        confirmButtonText: 'Try again',
+        heightAuto: false,
+        scrollbarPadding: false
+      });
+    }
   }
 }
