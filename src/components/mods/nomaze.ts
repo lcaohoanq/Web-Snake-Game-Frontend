@@ -2,7 +2,7 @@ import { collision } from '../../util/game/checkCollision';
 import { getDirection } from '../../util/game/directionState';
 import { loadResources } from '../../util/game/imagesLoader';
 import { updateDirection } from '../../util/game/keyDirection';
-import { initBox, initFood, initSnake, setDelay } from '../../util/game/settings';
+import { initBox, initFood, initSnake } from '../../util/game/settings';
 import { playEatSound, playGameOverSound } from '../../util/game/soundEffects';
 document.addEventListener('DOMContentLoaded', () => {
   const canvas = document.querySelector('#nomaze')! as HTMLCanvasElement;
@@ -13,13 +13,26 @@ document.addEventListener('DOMContentLoaded', () => {
   let score = 0;
   const context = canvas.getContext('2d')!;
   const box = initBox(10);
-  const delay = setDelay(50);
   const snake = initSnake(box);
   let food = initFood(box);
+  let gameOver = false;
+  let frameCount = 0;
+  const framesPerUpdate = 3; // Adjust this value to change the speed
 
   document.addEventListener('keydown', updateDirection);
 
   async function draw(): Promise<void> {
+    if (gameOver) return;
+
+    frameCount++;
+
+    if (frameCount < framesPerUpdate) {
+      requestAnimationFrame(draw);
+      return;
+    }
+
+    frameCount = 0;
+
     const { headImage, dotImage, appleImage } = await loadResources();
     context.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -46,10 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (snakeY < 0) snakeY = screenHeight - box;
 
     if (snakeX == food.x && snakeY == food.y) {
-      // Play the eating sound
-      // Play the eating sound
-      playEatSound().catch((error) => {
-        console.error('Error playing eating sound:', error);
+      playEatSound().catch(() => {
+        throw new Error('Error playing eat sound');
       });
       score++;
       food = {
@@ -77,13 +88,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     if (collision(newHead, snake)) {
-      clearInterval(game);
-
-      // Play the game over sound
+      gameOver = true;
       playGameOverSound()
         .then(() => {
           return setTimeout(() => {
-            console.log('Game over sound played');
             // Store the score in Local Storage
             localStorage.setItem('score', score.toString());
             window.location.href = '../../templates/gameover.html';
@@ -95,12 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     snake.unshift(newHead);
+    if (!gameOver) requestAnimationFrame(draw);
   }
 
-  const game = setInterval(draw, delay);
-
-  // window.addEventListener('resize', function () {
-  //   canvas.width = window.innerWidth;
-  //   canvas.height = window.innerHeight;
-  // });
+  requestAnimationFrame(draw);
 });

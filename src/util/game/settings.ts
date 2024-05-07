@@ -1,9 +1,5 @@
 import { FoodType, SnakeType } from '../../models/game.models';
 
-export function setDelay(time: number): number {
-  return time;
-}
-
 export function initBox(size: number): number {
   return size;
 }

@@ -2,7 +2,7 @@ import { collision } from '../../util/game/checkCollision';
 import { getDirection } from '../../util/game/directionState';
 import { loadResources } from '../../util/game/imagesLoader';
 import { updateDirection } from '../../util/game/keyDirection';
-import { initBox, initFood, initSnake, setDelay } from '../../util/game/settings';
+import { initBox, initFood, initSnake } from '../../util/game/settings';
 import { playEatSound, playGameOverSound } from '../../util/game/soundEffects';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,14 +19,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const context = canvas.getContext('2d')!;
   const box = initBox(10);
-  const delay = setDelay(50);
   const snake = initSnake(box);
   let food = initFood(box);
   let score = 0;
+  let gameOver = false;
+  let frameCount = 0;
+  const framesPerUpdate = 3; // Adjust this value to change the speed
 
   document.addEventListener('keydown', updateDirection);
 
   async function draw(): Promise<void> {
+    if (gameOver) return;
+
+    frameCount++;
+
+    if (frameCount < framesPerUpdate) {
+      requestAnimationFrame(draw);
+      return;
+    }
+
+    frameCount = 0;
+
     const { headImage, dotImage, appleImage, wallImage } = await loadResources();
     context.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -108,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
       snakeY >= screenHeight - 30 ||
       collision(newHead, snake)
     ) {
-      clearInterval(game);
+      gameOver = true;
 
       playGameOverSound()
         .then(() => {
@@ -125,12 +138,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     snake.unshift(newHead);
+    if (!gameOver) requestAnimationFrame(draw);
   }
 
-  const game = setInterval(draw, delay);
-
-  // window.addEventListener('resize', function () {
-  //   canvas.width = window.innerWidth;
-  //   canvas.height = window.innerHeight;
-  // });
+  requestAnimationFrame(draw);
 });
