@@ -18,11 +18,11 @@
 
       .card_button_gameover {
         background-color: $main-color;
-        @include setBorderRadius(5px);
+        @include setBorderRadius(10px);
 
         a {
           color: white;
-          @include setBorderRadius(5px);
+          @include setBorderRadius(10px);
         }
 
         a#playAgain {
