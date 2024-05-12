@@ -394,6 +394,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 
 /***/ }),
 
+/***/ "./src/styles/pages/_404.scss":
+/*!************************************!*\
+  !*** ./src/styles/pages/_404.scss ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://snake-game-fe/./src/styles/pages/_404.scss?");
+
+/***/ }),
+
 /***/ "./src/styles/pages/_apartment.scss":
 /*!******************************************!*\
   !*** ./src/styles/pages/_apartment.scss ***!
@@ -559,6 +570,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 
 /***/ }),
 
+/***/ "./src/styles/theme/_error.scss":
+/*!**************************************!*\
+  !*** ./src/styles/theme/_error.scss ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://snake-game-fe/./src/styles/theme/_error.scss?");
+
+/***/ }),
+
 /***/ "./src/styles/theme/_light.scss":
 /*!**************************************!*\
   !*** ./src/styles/theme/_light.scss ***!
@@ -601,6 +623,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var swee
 
 /***/ }),
 
+/***/ "./src/components/mods/apartment.ts":
+/*!******************************************!*\
+  !*** ./src/components/mods/apartment.ts ***!
+  \******************************************/
+/***/ (() => {
+
+eval("\n\n//# sourceURL=webpack://snake-game-fe/./src/components/mods/apartment.ts?");
+
+/***/ }),
+
 /***/ "./src/components/mods/box.ts":
 /*!************************************!*\
   !*** ./src/components/mods/box.ts ***!
@@ -612,6 +644,26 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _uti
 
 /***/ }),
 
+/***/ "./src/components/mods/campaign.ts":
+/*!*****************************************!*\
+  !*** ./src/components/mods/campaign.ts ***!
+  \*****************************************/
+/***/ (() => {
+
+eval("\n\n//# sourceURL=webpack://snake-game-fe/./src/components/mods/campaign.ts?");
+
+/***/ }),
+
+/***/ "./src/components/mods/mill.ts":
+/*!*************************************!*\
+  !*** ./src/components/mods/mill.ts ***!
+  \*************************************/
+/***/ (() => {
+
+eval("\n\n//# sourceURL=webpack://snake-game-fe/./src/components/mods/mill.ts?");
+
+/***/ }),
+
 /***/ "./src/components/mods/nomaze.ts":
 /*!***************************************!*\
   !*** ./src/components/mods/nomaze.ts ***!
@@ -620,6 +672,26 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _uti
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _util_game_checkCollision__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../util/game/checkCollision */ \"./src/util/game/checkCollision.ts\");\n/* harmony import */ var _util_game_directionState__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/game/directionState */ \"./src/util/game/directionState.ts\");\n/* harmony import */ var _util_game_imagesLoader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/game/imagesLoader */ \"./src/util/game/imagesLoader.ts\");\n/* harmony import */ var _util_game_keyDirection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/game/keyDirection */ \"./src/util/game/keyDirection.ts\");\n/* harmony import */ var _util_game_settings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/game/settings */ \"./src/util/game/settings.ts\");\n/* harmony import */ var _util_game_soundEffects__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/game/soundEffects */ \"./src/util/game/soundEffects.ts\");\nvar __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {\n    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }\n    return new (P || (P = Promise))(function (resolve, reject) {\n        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }\n        function rejected(value) { try { step(generator[\"throw\"](value)); } catch (e) { reject(e); } }\n        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }\n        step((generator = generator.apply(thisArg, _arguments || [])).next());\n    });\n};\nvar __generator = (undefined && undefined.__generator) || function (thisArg, body) {\n    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;\n    return g = { next: verb(0), \"throw\": verb(1), \"return\": verb(2) }, typeof Symbol === \"function\" && (g[Symbol.iterator] = function() { return this; }), g;\n    function verb(n) { return function (v) { return step([n, v]); }; }\n    function step(op) {\n        if (f) throw new TypeError(\"Generator is already executing.\");\n        while (g && (g = 0, op[0] && (_ = 0)), _) try {\n            if (f = 1, y && (t = op[0] & 2 ? y[\"return\"] : op[0] ? y[\"throw\"] || ((t = y[\"return\"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;\n            if (y = 0, t) op = [op[0] & 2, t.value];\n            switch (op[0]) {\n                case 0: case 1: t = op; break;\n                case 4: _.label++; return { value: op[1], done: false };\n                case 5: _.label++; y = op[1]; op = [0]; continue;\n                case 7: op = _.ops.pop(); _.trys.pop(); continue;\n                default:\n                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }\n                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }\n                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }\n                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }\n                    if (t[2]) _.ops.pop();\n                    _.trys.pop(); continue;\n            }\n            op = body.call(thisArg, _);\n        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }\n        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };\n    }\n};\n\n\n\n\n\n\ndocument.addEventListener('DOMContentLoaded', function () {\n    var canvas = document.querySelector('#nomaze');\n    canvas.width = window.innerWidth;\n    canvas.height = window.innerHeight;\n    var screenWidth = canvas.width;\n    var screenHeight = canvas.height;\n    var score = 0;\n    var context = canvas.getContext('2d');\n    var box = (0,_util_game_settings__WEBPACK_IMPORTED_MODULE_4__.initBox)(10);\n    var snake = (0,_util_game_settings__WEBPACK_IMPORTED_MODULE_4__.initSnake)(box);\n    var food = (0,_util_game_settings__WEBPACK_IMPORTED_MODULE_4__.initFood)(box);\n    var gameOver = false;\n    var frameCount = 0;\n    var framesPerUpdate = 3; // Adjust this value to change the speed\n    document.addEventListener('keydown', _util_game_keyDirection__WEBPACK_IMPORTED_MODULE_3__.updateDirection);\n    function draw() {\n        return __awaiter(this, void 0, void 0, function () {\n            var _a, headImage, dotImage, appleImage, i, img, snakeX, snakeY, direction, newHead;\n            return __generator(this, function (_b) {\n                switch (_b.label) {\n                    case 0:\n                        if (gameOver)\n                            return [2 /*return*/];\n                        frameCount++;\n                        if (frameCount < framesPerUpdate) {\n                            requestAnimationFrame(draw);\n                            return [2 /*return*/];\n                        }\n                        frameCount = 0;\n                        return [4 /*yield*/, (0,_util_game_imagesLoader__WEBPACK_IMPORTED_MODULE_2__.loadResources)()];\n                    case 1:\n                        _a = _b.sent(), headImage = _a.headImage, dotImage = _a.dotImage, appleImage = _a.appleImage;\n                        context.clearRect(0, 0, canvas.width, canvas.height);\n                        for (i = 0; i < snake.length; i++) {\n                            img = i == 0 ? headImage : dotImage;\n                            context.drawImage(img, snake[i].x, snake[i].y, box, box);\n                        }\n                        context.drawImage(appleImage, food.x, food.y, box, box);\n                        snakeX = snake[0].x;\n                        snakeY = snake[0].y;\n                        direction = (0,_util_game_directionState__WEBPACK_IMPORTED_MODULE_1__.getDirection)();\n                        if (direction == 'LEFT')\n                            snakeX -= box;\n                        if (direction == 'UP')\n                            snakeY -= box;\n                        if (direction == 'RIGHT')\n                            snakeX += box;\n                        if (direction == 'DOWN')\n                            snakeY += box;\n                        // Handle wall collisions\n                        if (snakeX >= screenWidth)\n                            snakeX = 0;\n                        if (snakeX < 0)\n                            snakeX = screenWidth - box;\n                        if (snakeY >= screenHeight)\n                            snakeY = 0;\n                        if (snakeY < 0)\n                            snakeY = screenHeight - box;\n                        if (snakeX == food.x && snakeY == food.y) {\n                            (0,_util_game_soundEffects__WEBPACK_IMPORTED_MODULE_5__.playEatSound)().catch(function () {\n                                throw new Error('Error playing eat sound');\n                            });\n                            score++;\n                            food = {\n                                x: Math.floor(Math.random() * (screenWidth / box)) * box,\n                                y: Math.floor(Math.random() * (screenHeight / box)) * box\n                            };\n                        }\n                        else {\n                            snake.pop();\n                        }\n                        if (snakeX < 0) {\n                            snakeX = screenWidth;\n                        }\n                        else if (snakeX > screenWidth) {\n                            snakeX = 0;\n                        }\n                        if (snakeY < 0) {\n                            snakeY = screenHeight;\n                        }\n                        else if (snakeY > screenHeight) {\n                            snakeY = 0;\n                        }\n                        newHead = {\n                            x: snakeX,\n                            y: snakeY\n                        };\n                        if ((0,_util_game_checkCollision__WEBPACK_IMPORTED_MODULE_0__.collision)(newHead, snake)) {\n                            gameOver = true;\n                            (0,_util_game_soundEffects__WEBPACK_IMPORTED_MODULE_5__.playGameOverSound)()\n                                .then(function () {\n                                return setTimeout(function () {\n                                    // Store the score in Local Storage\n                                    localStorage.setItem('score', score.toString());\n                                    window.location.href = '../../templates/gameover.html';\n                                }, 5000);\n                            })\n                                .catch(function (error) {\n                                console.error('Error playing game over sound:', error);\n                            });\n                        }\n                        snake.unshift(newHead);\n                        if (!gameOver)\n                            requestAnimationFrame(draw);\n                        return [2 /*return*/];\n                }\n            });\n        });\n    }\n    requestAnimationFrame(draw);\n});\n\n\n//# sourceURL=webpack://snake-game-fe/./src/components/mods/nomaze.ts?");
+
+/***/ }),
+
+/***/ "./src/components/mods/rails.ts":
+/*!**************************************!*\
+  !*** ./src/components/mods/rails.ts ***!
+  \**************************************/
+/***/ (() => {
+
+eval("\n\n//# sourceURL=webpack://snake-game-fe/./src/components/mods/rails.ts?");
+
+/***/ }),
+
+/***/ "./src/components/mods/tunnel.ts":
+/*!***************************************!*\
+  !*** ./src/components/mods/tunnel.ts ***!
+  \***************************************/
+/***/ (() => {
+
+eval("document.addEventListener('DOMContentLoaded', function () {\n    var canvasTunnel = document.querySelector('#tunnel');\n    var canvasRails = document.querySelector('#rails');\n    var canvasMill = document.querySelector('#mill');\n    var canvasCampaign = document.querySelector('#campaign');\n    var canvasApartment = document.querySelector('#apartment');\n    if (canvasTunnel || canvasRails || canvasMill || canvasCampaign || canvasApartment) {\n        window.location.href = '../../templates/404.html';\n    }\n});\n\n\n//# sourceURL=webpack://snake-game-fe/./src/components/mods/tunnel.ts?");
 
 /***/ }),
 
@@ -911,7 +983,7 @@ eval("var map = {\n\t\"./bigAppleApp.wav\": \"./src/assets/sounds/bigAppleApp.wa
   \**********************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("var map = {\n\t\"./button/button.ts\": \"./src/components/button/button.ts\",\n\t\"./login/login.ts\": \"./src/components/login/login.ts\",\n\t\"./mods/box.ts\": \"./src/components/mods/box.ts\",\n\t\"./mods/nomaze.ts\": \"./src/components/mods/nomaze.ts\",\n\t\"./option/options.ts\": \"./src/components/option/options.ts\",\n\t\"./register/register.ts\": \"./src/components/register/register.ts\",\n\t\"./toggle/toggle.ts\": \"./src/components/toggle/toggle.ts\"\n};\n\n\nfunction webpackContext(req) {\n\tvar id = webpackContextResolve(req);\n\treturn __webpack_require__(id);\n}\nfunction webpackContextResolve(req) {\n\tif(!__webpack_require__.o(map, req)) {\n\t\tvar e = new Error(\"Cannot find module '\" + req + \"'\");\n\t\te.code = 'MODULE_NOT_FOUND';\n\t\tthrow e;\n\t}\n\treturn map[req];\n}\nwebpackContext.keys = function webpackContextKeys() {\n\treturn Object.keys(map);\n};\nwebpackContext.resolve = webpackContextResolve;\nmodule.exports = webpackContext;\nwebpackContext.id = \"./src/components sync recursive ts/\";\n\n//# sourceURL=webpack://snake-game-fe/./src/components/_sync_ts/?");
+eval("var map = {\n\t\"./button/button.ts\": \"./src/components/button/button.ts\",\n\t\"./login/login.ts\": \"./src/components/login/login.ts\",\n\t\"./mods/apartment.ts\": \"./src/components/mods/apartment.ts\",\n\t\"./mods/box.ts\": \"./src/components/mods/box.ts\",\n\t\"./mods/campaign.ts\": \"./src/components/mods/campaign.ts\",\n\t\"./mods/mill.ts\": \"./src/components/mods/mill.ts\",\n\t\"./mods/nomaze.ts\": \"./src/components/mods/nomaze.ts\",\n\t\"./mods/rails.ts\": \"./src/components/mods/rails.ts\",\n\t\"./mods/tunnel.ts\": \"./src/components/mods/tunnel.ts\",\n\t\"./option/options.ts\": \"./src/components/option/options.ts\",\n\t\"./register/register.ts\": \"./src/components/register/register.ts\",\n\t\"./toggle/toggle.ts\": \"./src/components/toggle/toggle.ts\"\n};\n\n\nfunction webpackContext(req) {\n\tvar id = webpackContextResolve(req);\n\treturn __webpack_require__(id);\n}\nfunction webpackContextResolve(req) {\n\tif(!__webpack_require__.o(map, req)) {\n\t\tvar e = new Error(\"Cannot find module '\" + req + \"'\");\n\t\te.code = 'MODULE_NOT_FOUND';\n\t\tthrow e;\n\t}\n\treturn map[req];\n}\nwebpackContext.keys = function webpackContextKeys() {\n\treturn Object.keys(map);\n};\nwebpackContext.resolve = webpackContextResolve;\nmodule.exports = webpackContext;\nwebpackContext.id = \"./src/components sync recursive ts/\";\n\n//# sourceURL=webpack://snake-game-fe/./src/components/_sync_ts/?");
 
 /***/ }),
 
@@ -941,7 +1013,7 @@ eval("var map = {\n\t\"./account.model.ts\": \"./src/models/account.model.ts\",\
   \********************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("var map = {\n\t\"./abstracts/_function.scss\": \"./src/styles/abstracts/_function.scss\",\n\t\"./abstracts/_mixins.scss\": \"./src/styles/abstracts/_mixins.scss\",\n\t\"./abstracts/_variables.scss\": \"./src/styles/abstracts/_variables.scss\",\n\t\"./base/_animations.scss\": \"./src/styles/base/_animations.scss\",\n\t\"./base/_base.scss\": \"./src/styles/base/_base.scss\",\n\t\"./base/_board.scss\": \"./src/styles/base/_board.scss\",\n\t\"./base/_typography.scss\": \"./src/styles/base/_typography.scss\",\n\t\"./base/_utilities.scss\": \"./src/styles/base/_utilities.scss\",\n\t\"./components/_button.scss\": \"./src/styles/components/_button.scss\",\n\t\"./components/_card.scss\": \"./src/styles/components/_card.scss\",\n\t\"./components/_direction.scss\": \"./src/styles/components/_direction.scss\",\n\t\"./components/_errorText.scss\": \"./src/styles/components/_errorText.scss\",\n\t\"./components/_footer.scss\": \"./src/styles/components/_footer.scss\",\n\t\"./components/_form.scss\": \"./src/styles/components/_form.scss\",\n\t\"./components/_googleButton.scss\": \"./src/styles/components/_googleButton.scss\",\n\t\"./components/_header.scss\": \"./src/styles/components/_header.scss\",\n\t\"./components/_input.scss\": \"./src/styles/components/_input.scss\",\n\t\"./components/_logo.scss\": \"./src/styles/components/_logo.scss\",\n\t\"./components/_optionButton.scss\": \"./src/styles/components/_optionButton.scss\",\n\t\"./components/_tittle.scss\": \"./src/styles/components/_tittle.scss\",\n\t\"./components/_toggle.scss\": \"./src/styles/components/_toggle.scss\",\n\t\"./layout/_body.scss\": \"./src/styles/layout/_body.scss\",\n\t\"./layout/_container.scss\": \"./src/styles/layout/_container.scss\",\n\t\"./pages/_apartment.scss\": \"./src/styles/pages/_apartment.scss\",\n\t\"./pages/_box.scss\": \"./src/styles/pages/_box.scss\",\n\t\"./pages/_campaign.scss\": \"./src/styles/pages/_campaign.scss\",\n\t\"./pages/_dashboard.scss\": \"./src/styles/pages/_dashboard.scss\",\n\t\"./pages/_error.scss\": \"./src/styles/pages/_error.scss\",\n\t\"./pages/_gameover.scss\": \"./src/styles/pages/_gameover.scss\",\n\t\"./pages/_home.scss\": \"./src/styles/pages/_home.scss\",\n\t\"./pages/_login.scss\": \"./src/styles/pages/_login.scss\",\n\t\"./pages/_mill.scss\": \"./src/styles/pages/_mill.scss\",\n\t\"./pages/_nomaze.scss\": \"./src/styles/pages/_nomaze.scss\",\n\t\"./pages/_options.scss\": \"./src/styles/pages/_options.scss\",\n\t\"./pages/_rails.scss\": \"./src/styles/pages/_rails.scss\",\n\t\"./pages/_register.scss\": \"./src/styles/pages/_register.scss\",\n\t\"./pages/_tunnel.scss\": \"./src/styles/pages/_tunnel.scss\",\n\t\"./theme/_dark.scss\": \"./src/styles/theme/_dark.scss\",\n\t\"./theme/_light.scss\": \"./src/styles/theme/_light.scss\"\n};\n\n\nfunction webpackContext(req) {\n\tvar id = webpackContextResolve(req);\n\treturn __webpack_require__(id);\n}\nfunction webpackContextResolve(req) {\n\tif(!__webpack_require__.o(map, req)) {\n\t\tvar e = new Error(\"Cannot find module '\" + req + \"'\");\n\t\te.code = 'MODULE_NOT_FOUND';\n\t\tthrow e;\n\t}\n\treturn map[req];\n}\nwebpackContext.keys = function webpackContextKeys() {\n\treturn Object.keys(map);\n};\nwebpackContext.resolve = webpackContextResolve;\nmodule.exports = webpackContext;\nwebpackContext.id = \"./src/styles sync recursive scss/\";\n\n//# sourceURL=webpack://snake-game-fe/./src/styles/_sync_scss/?");
+eval("var map = {\n\t\"./abstracts/_function.scss\": \"./src/styles/abstracts/_function.scss\",\n\t\"./abstracts/_mixins.scss\": \"./src/styles/abstracts/_mixins.scss\",\n\t\"./abstracts/_variables.scss\": \"./src/styles/abstracts/_variables.scss\",\n\t\"./base/_animations.scss\": \"./src/styles/base/_animations.scss\",\n\t\"./base/_base.scss\": \"./src/styles/base/_base.scss\",\n\t\"./base/_board.scss\": \"./src/styles/base/_board.scss\",\n\t\"./base/_typography.scss\": \"./src/styles/base/_typography.scss\",\n\t\"./base/_utilities.scss\": \"./src/styles/base/_utilities.scss\",\n\t\"./components/_button.scss\": \"./src/styles/components/_button.scss\",\n\t\"./components/_card.scss\": \"./src/styles/components/_card.scss\",\n\t\"./components/_direction.scss\": \"./src/styles/components/_direction.scss\",\n\t\"./components/_errorText.scss\": \"./src/styles/components/_errorText.scss\",\n\t\"./components/_footer.scss\": \"./src/styles/components/_footer.scss\",\n\t\"./components/_form.scss\": \"./src/styles/components/_form.scss\",\n\t\"./components/_googleButton.scss\": \"./src/styles/components/_googleButton.scss\",\n\t\"./components/_header.scss\": \"./src/styles/components/_header.scss\",\n\t\"./components/_input.scss\": \"./src/styles/components/_input.scss\",\n\t\"./components/_logo.scss\": \"./src/styles/components/_logo.scss\",\n\t\"./components/_optionButton.scss\": \"./src/styles/components/_optionButton.scss\",\n\t\"./components/_tittle.scss\": \"./src/styles/components/_tittle.scss\",\n\t\"./components/_toggle.scss\": \"./src/styles/components/_toggle.scss\",\n\t\"./layout/_body.scss\": \"./src/styles/layout/_body.scss\",\n\t\"./layout/_container.scss\": \"./src/styles/layout/_container.scss\",\n\t\"./pages/_404.scss\": \"./src/styles/pages/_404.scss\",\n\t\"./pages/_apartment.scss\": \"./src/styles/pages/_apartment.scss\",\n\t\"./pages/_box.scss\": \"./src/styles/pages/_box.scss\",\n\t\"./pages/_campaign.scss\": \"./src/styles/pages/_campaign.scss\",\n\t\"./pages/_dashboard.scss\": \"./src/styles/pages/_dashboard.scss\",\n\t\"./pages/_error.scss\": \"./src/styles/pages/_error.scss\",\n\t\"./pages/_gameover.scss\": \"./src/styles/pages/_gameover.scss\",\n\t\"./pages/_home.scss\": \"./src/styles/pages/_home.scss\",\n\t\"./pages/_login.scss\": \"./src/styles/pages/_login.scss\",\n\t\"./pages/_mill.scss\": \"./src/styles/pages/_mill.scss\",\n\t\"./pages/_nomaze.scss\": \"./src/styles/pages/_nomaze.scss\",\n\t\"./pages/_options.scss\": \"./src/styles/pages/_options.scss\",\n\t\"./pages/_rails.scss\": \"./src/styles/pages/_rails.scss\",\n\t\"./pages/_register.scss\": \"./src/styles/pages/_register.scss\",\n\t\"./pages/_tunnel.scss\": \"./src/styles/pages/_tunnel.scss\",\n\t\"./theme/_dark.scss\": \"./src/styles/theme/_dark.scss\",\n\t\"./theme/_error.scss\": \"./src/styles/theme/_error.scss\",\n\t\"./theme/_light.scss\": \"./src/styles/theme/_light.scss\"\n};\n\n\nfunction webpackContext(req) {\n\tvar id = webpackContextResolve(req);\n\treturn __webpack_require__(id);\n}\nfunction webpackContextResolve(req) {\n\tif(!__webpack_require__.o(map, req)) {\n\t\tvar e = new Error(\"Cannot find module '\" + req + \"'\");\n\t\te.code = 'MODULE_NOT_FOUND';\n\t\tthrow e;\n\t}\n\treturn map[req];\n}\nwebpackContext.keys = function webpackContextKeys() {\n\treturn Object.keys(map);\n};\nwebpackContext.resolve = webpackContextResolve;\nmodule.exports = webpackContext;\nwebpackContext.id = \"./src/styles sync recursive scss/\";\n\n//# sourceURL=webpack://snake-game-fe/./src/styles/_sync_scss/?");
 
 /***/ }),
 
